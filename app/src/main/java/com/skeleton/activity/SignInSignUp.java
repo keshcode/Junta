@@ -1,9 +1,46 @@
 package com.skeleton.activity;
 
+import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
+
+import com.skeleton.R;
+import com.skeleton.fragment.SignInFragment;
+import com.skeleton.fragment.SignUpFragment;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by keshav on 11/5/17.
  */
 
 public class SignInSignUp extends BaseActivity {
+    private TabLayout tlSignInSignUp;
+    private ViewPager vpSignInSignUp;
+    private List<Fragment> fragments;
+
+    @Override
+    protected void onCreate(final Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_sign_in_sign_up);
+        init();
+        PagerAdapter pagerAdapter = new com.skeleton.adapter.PagerAdapter(getSupportFragmentManager(), fragments);
+        vpSignInSignUp.setAdapter(pagerAdapter);
+        tlSignInSignUp.setupWithViewPager(vpSignInSignUp);
+    }
+
+    /**
+     * initialize all variables
+     */
+    private void init() {
+        tlSignInSignUp = (TabLayout) findViewById(R.id.tlSignInSignUp);
+        vpSignInSignUp = (ViewPager) findViewById(R.id.vpSignInSignUp);
+        fragments = new ArrayList<>();
+        fragments.add(new SignUpFragment());
+        fragments.add(new SignInFragment());
+    }
 
 }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#5abc4c</color>
+    <color name="colorPrimaryDark">#2ca11b</color>
+    <color name="colorAccent">#5abc4c</color>
 
     <!-- grayscale -->
     <color name="white">#FFFFFF</color>
@@ -14,6 +14,10 @@
     <color name="charcoal_grey">#333c40</color>
     <color name="transparent">#0000</color>
 
+
     <color name="button_color_normal">@color/colorPrimary</color>
     <color name="button_color_pressed">@color/colorAccent</color>
+
+    <color name="button_color_normal_secondary">#3967c1</color>
+    <color name="button_color_pressed_secondary">#2755ae</color>
 </resources>
