@@ -93,7 +93,6 @@ dependencies {
      * android Circular image
      */
     compile 'de.hdodenhof:circleimageview:2.1.0'
-
     /**
      *
      * android FCM dependencies

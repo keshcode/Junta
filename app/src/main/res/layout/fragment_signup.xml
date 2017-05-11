@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:layout_margin="@dimen/spacing_normal"
-              android:orientation="vertical">
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+<android.support.v4.widget.NestedScrollView
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="@dimen/spacing_large"
             android:layout_marginEnd="@dimen/spacing_small"
             android:layout_marginStart="@dimen/spacing_tiny"
             android:orientation="vertical">
@@ -53,7 +51,7 @@
                 <View
                     android:layout_width="1dp"
                     android:layout_marginTop="@dimen/spacing_tiny"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:background="@color/black"/>
 
                 <com.skeleton.util.customview.MaterialEditText
@@ -72,7 +70,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_small">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -110,7 +109,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="@dimen/spacing_tiny"
+                android:layout_marginTop="@dimen/spacing_small"
                 android:background="@color/black"/>
 
             <com.skeleton.util.customview.MaterialEditText
@@ -156,5 +155,4 @@
                 android:text="@string/sign_in_with_facebook"/>
 
         </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+    </android.support.v4.widget.NestedScrollView>

@@ -18,6 +18,8 @@ import com.skeleton.util.Log;
 import com.skeleton.util.Util;
 import com.skeleton.util.dialog.CustomAlertDialog;
 
+import io.paperdb.Paper;
+
 /**
  * Landing Page of the App
  */
@@ -30,6 +32,7 @@ public class SplashActivity extends BaseActivity implements FCMTokenInterface {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         init();
+        Paper.init(this);
     }
 
 
@@ -112,6 +115,7 @@ public class SplashActivity extends BaseActivity implements FCMTokenInterface {
     @Override
     public void onTokenReceived(final String token) {
         Log.e(TAG, token);
+        Paper.book().read("Access","");
         startActivity(new Intent(this, TestClassLocation.class));
     }
 
