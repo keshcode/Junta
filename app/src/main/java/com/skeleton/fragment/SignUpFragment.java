@@ -37,6 +37,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
+import io.paperdb.Paper;
 import okhttp3.RequestBody;
 
 
@@ -63,6 +64,7 @@ public class SignUpFragment extends Fragment {
     public View onCreateView(final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable final Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_signup, container, false);
         init(view);
+        Paper.init(getContext());
         ivProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
@@ -228,6 +230,7 @@ public class SignUpFragment extends Fragment {
                 if ("200".equals(response.getStatusCode().toString())) {
                     clearEditText(etName, etDOB, etConfirmPassword,
                             etEmailAddr, etPassword, etPhoneNo);
+                    Paper.book().write(AppConstant.KEY_ACCESS_TOKEN, response.getData().getAccessToken());
 //                    Intent intent = new Intent(getActivity(), DisplayResponseActivity.class);
 //                    intent.putExtra("response", response);
 //                    startActivity(intent);

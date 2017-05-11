@@ -36,6 +36,12 @@ public interface AppConstant {
     String KEY_FRAGMENT_PROFILE_PIC = "profilePic";
     String KEY_FRAGMENT_FLUSH_PREVIOUS_SESSIOINS = "flushPreviousSessions";
 
+    //KEY TO ACCESS
+    String KEY_ACCESS_TOKEN = "accessToken";
+    String KEY_PHONE_VERIFIED = "phoneVerified";
+    String KEY_PROFILE2 = "step2CompleteOrSkip";
+    String KEY_PROFILE1 = "step1CompleteOrSkip";
+
     //USER_SIGNUP_VALUES
     String VALUE_FRAGMENT_LANGUAGE = "EN";
     String VALUE_FRAGMENT_DEVICE_TYPE = "ANDROID";

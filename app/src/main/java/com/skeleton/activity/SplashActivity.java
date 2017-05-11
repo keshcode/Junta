@@ -12,6 +12,7 @@ import android.provider.Settings;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.skeleton.R;
+import com.skeleton.constant.AppConstant;
 import com.skeleton.fcm.FCMTokenInterface;
 import com.skeleton.fcm.MyFirebaseInstanceIdService;
 import com.skeleton.util.Log;
@@ -115,8 +116,13 @@ public class SplashActivity extends BaseActivity implements FCMTokenInterface {
     @Override
     public void onTokenReceived(final String token) {
         Log.e(TAG, token);
-        Paper.book().read("Access","");
-        startActivity(new Intent(this, TestClassLocation.class));
+        String mAccessToken = Paper.book().read(AppConstant.KEY_ACCESS_TOKEN);
+        if (mAccessToken != null) {
+            startActivity(new Intent(this, OTPActivity.class));
+        } else {
+            Log.d("debug", "access denied");
+            startActivity(new Intent(this, SignInSignUp.class));
+        }
     }
 
     @Override

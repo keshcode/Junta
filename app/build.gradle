@@ -45,7 +45,7 @@ android {
     }
     productFlavors {
         DEV {
-            buildConfigField 'String', 'BASE_URL', '" YOUR DEV URL"'
+            buildConfigField 'String', 'BASE_URL', '"http://52.38.181.185:3000/"'
             buildConfigField 'boolean', 'WATER_MARK', 'true'
         }
         QA {
@@ -78,72 +78,72 @@ dependencies {
      *
      * android development support dependencies
      */
+    /**
+     * android glide to set image from gallery or camera
+     */
+    /**
+     * android Circular image
+     */
+    /**
+     *
+     * android FCM dependencies
+     */
+
+    /**
+     *
+     *  android Map and Location dependencies
+     */
+
+    /**
+     *
+     * Retrofit dependencies
+     */
+
+    /**
+     *
+     * To set the fonts dependencies
+     */
+    /**
+     * Paper DB dependencies
+     */
+
+    /**
+     * Facebook dependencies
+     */
+    /**
+     * Image chooser dependencies
+     */
+    /**
+     * Image Crop dependencies
+     */
+
+    /**
+     * leakcanary dependencies
+     */
+
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:customtabs:25.3.1'
     compile 'com.android.support:design:25.3.1'
     compile 'com.android.support:cardview-v7:25.3.1'
     compile 'com.android.support:recyclerview-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    /**
-     * android glide to set image from gallery or camera
-     */
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.android.support:support-v4:25.1.0'
-    /**
-     * android Circular image
-     */
     compile 'de.hdodenhof:circleimageview:2.1.0'
-    /**
-     *
-     * android FCM dependencies
-     */
     compile 'com.google.firebase:firebase-messaging:10.2.1'
-
-    /**
-     *
-     *  android Map and Location dependencies
-     */
     compile 'com.google.android.gms:play-services-maps:10.2.1'
     compile 'com.google.android.gms:play-services-location:10.2.1'
-
-    /**
-     *
-     * Retrofit dependencies
-     */
     compile 'com.squareup.retrofit2:retrofit:2.2.0'
     compile 'com.squareup.retrofit2:converter-gson:2.2.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.6.0'
-
-    /**
-     *
-     * To set the fonts dependencies
-     */
     compile 'uk.co.chrisjenx:calligraphy:2.2.0'
-    /**
-     * Paper DB dependencies
-     */
     compile 'io.paperdb:paperdb:2.0'
-
-    /**
-     * Facebook dependencies
-     */
     compile 'com.facebook.android:facebook-android-sdk:4.21.1'
-    /**
-     * Image chooser dependencies
-     */
     compile 'com.kbeanie:multipicker:1.1.31@aar'
-    /**
-     * Image Crop dependencies
-     */
     compile 'com.theartofdev.edmodo:android-image-cropper:2.3.+'
-
-    /**
-     * leakcanary dependencies
-     */
+    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    testCompile 'junit:junit:4.12'
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
-    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
-
-    testCompile 'junit:junit:4.12'
 }
 apply plugin: 'com.google.gms.google-services'
