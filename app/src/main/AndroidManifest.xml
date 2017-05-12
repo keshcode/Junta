@@ -38,10 +38,8 @@
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-
         </activity>
         <activity android:name=".activity.SignInSignUp">
-
         </activity>
         <activity android:name=".activity.TestClassLocation">
         </activity>
@@ -71,6 +69,10 @@
         </receiver>
 
         <activity android:name=".activity.OTPActivity">
+        </activity>
+        <activity android:name=".activity.SetProfileActivity">
+        </activity>
+        <activity android:name=".activity.HomeActivty">
         </activity>
     </application>
 

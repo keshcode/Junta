@@ -1,6 +1,8 @@
 package com.skeleton.retrofit;
 
 
+import com.skeleton.model.Response;
+
 import java.util.HashMap;
 
 import okhttp3.RequestBody;
@@ -8,6 +10,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
@@ -23,6 +26,7 @@ public interface ApiInterface {
     String UPDATE_LOCATION = "api/v1/user/updateLocation";
     String USER_SIGNUP = "api/user/register";
     String USER_LOGIN = "api/user/login";
+    String USER_PROFILE = "api/user/getProfile";
 
     /**
      * Api Call for user signup
@@ -42,9 +46,17 @@ public interface ApiInterface {
      * @return : response of server {@link CommonResponse}
      */
     @POST(USER_LOGIN)
-    Call<CommonResponse> userLogin(@Header(AUTHORIZATION) String authorization,
-                                   @Body HashMap<String, String> map);
+    Call<Response> userLogin(@Header(AUTHORIZATION) String authorization,
+                             @Body HashMap<String, String> map);
 
+    /**
+     * gets user profile
+     *
+     * @param mAccessToken to the user account
+     * @return complete profile status of user
+     */
+    @GET(USER_PROFILE)
+    Call<Response> userProfile(@Header("authorization") String mAccessToken);
 
 //    /**
 //     * @param map

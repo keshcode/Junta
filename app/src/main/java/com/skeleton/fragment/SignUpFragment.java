@@ -258,7 +258,6 @@ public class SignUpFragment extends Fragment {
     public static void clearEditText(final EditText... editText) {
         for (EditText editText1 : editText) {
             editText1.setText("");
-
         }
     }
 
