@@ -49,5 +49,5 @@ public interface AppConstant {
     String VALUE_FRAGMENT_FLUSH_PREVIOUS_SESSIOINS = "true";
     int VALUE_FRAGMENT_APP_VERSION = 100;
 
-    //
+
 }

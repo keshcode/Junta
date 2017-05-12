@@ -2,6 +2,8 @@
     <string name="msg_wifi_enabled">Wifi enabled</string>
     <string name="msg_mobile_data_enabled">Mobile data enabled</string>
     <string name="msg_not_connected_to_internet">Not connected to Internet</string>
+    <string name="msg_enter_otp">Please Enter OTP number you have recieved as an SMS on phone no :</string>
+
 
     <string name="log_fcm_message_id">"FCM Message Id: "</string>
     <string name="log_fcm_notification_message">"FCM Notification Message: "</string>

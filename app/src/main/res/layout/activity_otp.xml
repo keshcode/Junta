@@ -11,39 +11,51 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/unlocked"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:layout_margin="@dimen/spacing_normal"
+                android:layout_weight="1"
+                android:background="@drawable/button_curved_border"
+                android:drawablePadding="@dimen/spacing_tiny"
                 android:drawableStart="@drawable/resend_icon"
-                android:textSize="@dimen/font_large"
                 android:gravity="center"
                 android:padding="@dimen/spacing_small"
-                android:drawablePadding="@dimen/spacing_tiny"
-                android:background="@drawable/button_curved_border"
                 android:text="@string/button_resend_otp"
-                android:layout_height="wrap_content"/>
+                android:textSize="@dimen/font_large"/>
+
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
+                android:layout_height="wrap_content"
                 android:layout_margin="@dimen/spacing_normal"
-                android:padding="@dimen/spacing_small"
-                android:drawableStart="@drawable/edit_num"
-                android:drawablePadding="@dimen/spacing_tiny"
-                android:textSize="@dimen/font_large"
-                android:text="@string/button_edit_number"
+                android:layout_weight="1"
                 android:background="@drawable/button_curved_border"
-                android:layout_height="wrap_content"/>
+                android:drawablePadding="@dimen/spacing_tiny"
+                android:drawableStart="@drawable/edit_num"
+                android:gravity="center"
+                android:padding="@dimen/spacing_small"
+                android:text="@string/button_edit_number"
+                android:textSize="@dimen/font_large"/>
+
         </LinearLayout>
 
+        <TextView
+            style="@style/TvOtp"/>
+
+        <TextView
+            style="@style/TvOtp"
+            android:layout_gravity="center"
+            android:text="phone NO"/>
     </LinearLayout>
 
 
