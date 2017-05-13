@@ -53,4 +53,6 @@ public class Data implements Serializable {
         this.userDetails = userDetails;
     }
 
+
+
 }

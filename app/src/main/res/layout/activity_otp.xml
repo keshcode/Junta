@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/spacing_xlarge"
     android:orientation="vertical"
     tools:context="com.skeleton.activity.OTPActivity">
 
@@ -22,40 +23,61 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/spacing_normal"
-                android:layout_weight="1"
-                android:background="@drawable/button_curved_border"
-                android:drawablePadding="@dimen/spacing_tiny"
+                android:id="@+id/tvButtonResendOTP"
+                style="@style/TvOTPButtonTheme"
                 android:drawableStart="@drawable/resend_icon"
-                android:gravity="center"
-                android:padding="@dimen/spacing_small"
-                android:text="@string/button_resend_otp"
-                android:textSize="@dimen/font_large"/>
+                android:text="@string/button_resend_otp"/>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/spacing_normal"
-                android:layout_weight="1"
-                android:background="@drawable/button_curved_border"
-                android:drawablePadding="@dimen/spacing_tiny"
+                android:id="@+id/tvButtonEditNumber"
+                style="@style/TvOTPButtonTheme"
                 android:drawableStart="@drawable/edit_num"
-                android:gravity="center"
-                android:padding="@dimen/spacing_small"
-                android:text="@string/button_edit_number"
-                android:textSize="@dimen/font_large"/>
+                android:text="@string/button_edit_number"/>
 
         </LinearLayout>
 
         <TextView
-            style="@style/TvOtp"/>
+            style="@style/TvOtpNo"
+            android:text="@string/msg_enter_otp"/>
 
         <TextView
-            style="@style/TvOtp"
+            android:id="@+id/tvPhoneNo"
+            style="@style/TvOtpNo"
             android:layout_gravity="center"
             android:text="phone NO"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_large">
+
+            <EditText
+                android:id="@+id/etOtpDigit1"
+                style="@style/TvOTPEnterTheme"/>
+
+            <EditText
+                android:id="@+id/etOtpDigit2"
+                style="@style/TvOTPEnterTheme"/>
+
+            <EditText
+                android:id="@+id/etOtpDigit3"
+                style="@style/TvOTPEnterTheme"/>
+
+            <EditText
+                android:id="@+id/etOtpDigit4"
+                style="@style/TvOTPEnterTheme"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnVerifiyOTP"
+            style="@style/btnTheme"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_small"
+            android:layout_marginBottom="@dimen/spacing_small"
+            android:layout_weight="0"
+            android:text="@string/button_verify"/>
     </LinearLayout>
 
 

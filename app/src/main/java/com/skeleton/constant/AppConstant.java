@@ -25,6 +25,7 @@ public interface AppConstant {
     String KEY_FRAGMENT_DOB = "dob";
     String KEY_FRAGMENT_COUNTRY_CODE = "countryCode";
     String KEY_FRAGMENT_PHONE = "phoneNo";
+    String KEY_FRAGMENT_OTPCODE = "OTPCODE";
     String KEY_FRAGMENT_EMAIL = "email";
     String KEY_FRAGMENT_PASSWORD = "password";
     String KEY_FRAGMENT_LANGUAGE = "language";
@@ -38,9 +39,6 @@ public interface AppConstant {
 
     //KEY TO ACCESS
     String KEY_ACCESS_TOKEN = "accessToken";
-    String KEY_PHONE_VERIFIED = "phoneVerified";
-    String KEY_PROFILE2 = "step2CompleteOrSkip";
-    String KEY_PROFILE1 = "step1CompleteOrSkip";
 
     //USER_SIGNUP_VALUES
     String VALUE_FRAGMENT_LANGUAGE = "EN";

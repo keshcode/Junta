@@ -132,13 +132,17 @@ public class SplashActivity extends BaseActivity implements FCMTokenInterface {
      * @param mAccessToken token access user details
      */
     public void directToActivty(final String mAccessToken) {
+        Log.d("debug", mAccessToken);
         if (mAccessToken != null) {
             ApiInterface apiInterface = RestClient.getApiInterface();
             apiInterface.userProfile("bearer " + mAccessToken).enqueue(new ResponseResolver<Response>(this, true, true) {
                 @Override
                 public void success(final Response response) {
                     if (!response.getData().getUserDetails().getPhoneVerified()) {
-                        startActivity(new Intent(SplashActivity.this, OTPActivity.class));
+                        Intent intent = new Intent(SplashActivity.this, OTPActivity.class);
+                        intent.putExtra(KEY_FRAGMENT_PHONE, response.getData().getUserDetails().getPhoneNo());
+                        intent.putExtra(KEY_FRAGMENT_COUNTRY_CODE, response.getData().getUserDetails().getCountryCode());
+                        startActivity(intent);
                     } else {
                         if (response.getData().getUserDetails().getStep1CompleteOrSkip()
                                 && response.getData().getUserDetails().getStep2CompleteOrSkip()) {

@@ -259,6 +259,7 @@ public class SignUpFragment extends Fragment {
         for (EditText editText1 : editText) {
             editText1.setText("");
         }
+
     }
 
 }

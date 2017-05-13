@@ -14,6 +14,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.PartMap;
 
 import static com.skeleton.constant.ApiKeyConstant.AUTHORIZATION;
@@ -27,6 +28,8 @@ public interface ApiInterface {
     String USER_SIGNUP = "api/user/register";
     String USER_LOGIN = "api/user/login";
     String USER_PROFILE = "api/user/getProfile";
+    String USER_OTP = "api/user/resendOTP";
+    String USER_VERFIY_OTP = "api/user/verifyOTP";
 
     /**
      * Api Call for user signup
@@ -57,6 +60,22 @@ public interface ApiInterface {
      */
     @GET(USER_PROFILE)
     Call<Response> userProfile(@Header("authorization") String mAccessToken);
+
+    /**
+     * @param mAccessToken Access to the User Account
+     * @return OTP
+     */
+    @PUT(USER_OTP)
+    Call<CommonResponse> resendOtp(@Header("authorization") String mAccessToken);
+
+    /**
+     *
+     * @param mAccessToken Access to the User Account
+     * @param map HashMap tp user details
+     * @return null
+     */
+    @PUT(USER_VERFIY_OTP)
+    Call<CommonResponse> ConfirmOtp(@Header("authorization") String mAccessToken, @FieldMap HashMap<String, String> map);
 
 //    /**
 //     * @param map
