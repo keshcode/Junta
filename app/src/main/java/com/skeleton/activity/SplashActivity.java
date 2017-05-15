@@ -12,7 +12,7 @@ import android.provider.Settings;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.skeleton.R;
-import com.skeleton.constant.AppConstant;
+import com.skeleton.database.CommonData;
 import com.skeleton.fcm.FCMTokenInterface;
 import com.skeleton.fcm.MyFirebaseInstanceIdService;
 import com.skeleton.model.Response;
@@ -23,8 +23,6 @@ import com.skeleton.retrofit.RestClient;
 import com.skeleton.util.Log;
 import com.skeleton.util.Util;
 import com.skeleton.util.dialog.CustomAlertDialog;
-
-import io.paperdb.Paper;
 
 /**
  * Landing Page of the App
@@ -38,7 +36,6 @@ public class SplashActivity extends BaseActivity implements FCMTokenInterface {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         init();
-        Paper.init(this);
     }
 
 
@@ -121,7 +118,7 @@ public class SplashActivity extends BaseActivity implements FCMTokenInterface {
     @Override
     public void onTokenReceived(final String token) {
         Log.e(TAG, token);
-        String mAccessToken = Paper.book().read(AppConstant.KEY_ACCESS_TOKEN);
+        String mAccessToken = CommonData.getAccessToken();
         directToActivty(mAccessToken);
         finish();
     }
@@ -138,9 +135,8 @@ public class SplashActivity extends BaseActivity implements FCMTokenInterface {
                 @Override
                 public void success(final Response response) {
                     if (!response.getData().getUserDetails().getPhoneVerified()) {
+                        CommonData.setUserData(response.getData().getUserDetails());
                         Intent intent = new Intent(SplashActivity.this, OTPActivity.class);
-                        intent.putExtra(KEY_FRAGMENT_PHONE, response.getData().getUserDetails().getPhoneNo());
-                        intent.putExtra(KEY_FRAGMENT_COUNTRY_CODE, response.getData().getUserDetails().getCountryCode());
                         startActivity(intent);
                     } else {
                         if (response.getData().getUserDetails().getStep1CompleteOrSkip()

@@ -36,7 +36,7 @@ public interface AppConstant {
     String KEY_FRAGMENT_ORIENTATION = "orientation";
     String KEY_FRAGMENT_PROFILE_PIC = "profilePic";
     String KEY_FRAGMENT_FLUSH_PREVIOUS_SESSIOINS = "flushPreviousSessions";
-    String KEY_FRAGMENT_DATA = "data";
+    String KEY_FRAGMENT_USER_DETAILS = "userDetails";
     String KEY_FRAGMENT_NEW_PHONE_NUMBER = "newNumber";
 
     //KEY TO ACCESS

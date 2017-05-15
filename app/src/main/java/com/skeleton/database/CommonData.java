@@ -1,6 +1,8 @@
 package com.skeleton.database;
 
+import com.skeleton.constant.AppConstant;
 import com.skeleton.constant.PaperDbConstant;
+import com.skeleton.model.UserDetails;
 
 import io.paperdb.Paper;
 
@@ -65,4 +67,23 @@ public final class CommonData implements PaperDbConstant {
         Paper.book().destroy();
         updateFCMToken(deviceToken);
     }
+    //======================================== Set User Data===============================================
+
+    /**
+     * sets User Details
+     *
+     * @param mUserDetails user data object
+     */
+    public static void setUserData(final UserDetails mUserDetails) {
+        Paper.book().write(AppConstant.KEY_FRAGMENT_USER_DETAILS, mUserDetails);
+    }
+    //======================================== Get User Data===============================================
+
+    /**
+     * @return user details object
+     */
+    public static UserDetails getUserData() {
+        return Paper.book().read(AppConstant.KEY_FRAGMENT_USER_DETAILS);
+    }
 }
+

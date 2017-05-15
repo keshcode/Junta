@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import com.skeleton.R;
 import com.skeleton.constant.AppConstant;
+import com.skeleton.database.CommonData;
 import com.skeleton.model.Response;
 import com.skeleton.retrofit.APIError;
 import com.skeleton.retrofit.ApiInterface;
@@ -66,7 +67,8 @@ public class SignInFragment extends BaseFragment {
             @Override
             public void success(final Response response) {
                 if ("200".equals(response.getStatusCode())) {
-                    Paper.book().write(AppConstant.KEY_ACCESS_TOKEN, response.getData().getAccessToken());
+                    CommonData.saveAccessToken(response.getData().getAccessToken());
+                    CommonData.setUserData(response.getData().getUserDetails());
                     Log.d("debug", "accEss ALLOWED");
                 }
             }

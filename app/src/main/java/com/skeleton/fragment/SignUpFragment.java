@@ -19,6 +19,7 @@ import com.bumptech.glide.Glide;
 import com.kbeanie.multipicker.api.entity.ChosenImage;
 import com.skeleton.R;
 import com.skeleton.constant.AppConstant;
+import com.skeleton.database.CommonData;
 import com.skeleton.retrofit.APIError;
 import com.skeleton.retrofit.ApiInterface;
 import com.skeleton.retrofit.MultipartParams;
@@ -230,7 +231,8 @@ public class SignUpFragment extends Fragment {
                 if ("200".equals(response.getStatusCode().toString())) {
                     clearEditText(etName, etDOB, etConfirmPassword,
                             etEmailAddr, etPassword, etPhoneNo);
-                    Paper.book().write(AppConstant.KEY_ACCESS_TOKEN, response.getData().getAccessToken());
+                    CommonData.saveAccessToken(response.getData().getAccessToken());
+                    CommonData.setUserData(response.getData().getUserDetails());
 //                    Intent intent = new Intent(getActivity(), DisplayResponseActivity.class);
 //                    intent.putExtra("response", response);
 //                    startActivity(intent);

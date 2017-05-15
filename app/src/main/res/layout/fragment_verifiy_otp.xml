@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.skeleton.activity.OTPActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/sign_up_screen_image"/>
+
+    <include
+        android:id="@+id/llToolbar"
+        layout="@layout/toolbar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/llToolbar"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/spacing_large">
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/unlocked"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvButtonResendOTP"
+                style="@style/TvOTPButtonTheme"
+                android:clickable="true"
+                android:drawableStart="@drawable/resend_icon"
+                android:text="@string/button_resend_otp"/>
+
+            <TextView
+                android:id="@+id/tvButtonEditNumber"
+                style="@style/TvOTPButtonTheme"
+                android:clickable="true"
+                android:drawableStart="@drawable/edit_num"
+                android:text="@string/button_edit_number"/>
+
+        </LinearLayout>
+
+        <TextView
+            style="@style/TvOtpNo"
+            android:text="@string/msg_enter_otp"/>
+
+        <TextView
+            android:id="@+id/tvPhoneNo"
+            style="@style/TvOtpNo"
+            android:layout_gravity="center"
+            android:text="phone NO"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/etOtpDigit1"
+                style="@style/EtOTPEnterTheme"/>
+
+            <EditText
+                android:id="@+id/etOtpDigit2"
+                style="@style/EtOTPEnterTheme"/>
+
+            <EditText
+                android:id="@+id/etOtpDigit3"
+                style="@style/EtOTPEnterTheme"/>
+
+            <EditText
+                android:id="@+id/etOtpDigit4"
+                style="@style/EtOTPEnterTheme"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnVerifiyOTP"
+            style="@style/btnTheme"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_small"
+            android:layout_marginBottom="@dimen/spacing_small"
+            android:layout_weight="0"
+            android:text="@string/button_verify"/>
+    </LinearLayout>
+
+
+</RelativeLayout>

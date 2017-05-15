@@ -8,7 +8,6 @@ import java.util.HashMap;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -19,7 +18,6 @@ import retrofit2.http.PUT;
 import retrofit2.http.PartMap;
 
 import static com.skeleton.constant.ApiKeyConstant.AUTHORIZATION;
-import static com.skeleton.retrofit.ApiInterface.USER_UPDATE_PROFILE;
 
 /**
  * Developer: Saurabh Verma
@@ -80,13 +78,13 @@ public interface ApiInterface {
     Call<CommonResponse> confirmOtp(@Header("authorization") String mAccessToken, @Body HashMap<String, String> map);
 
     /**
-     *
      * @param mAccessToken Access to the User Account
-     * @param mNewNumber updated number by User
-     * @return
+     * @param map          items that are to be updated
+     * @return Response Model Class
      */
+    @Multipart
     @PUT(USER_UPDATE_PROFILE)
-    Call<CommonResponse> editPhoneNumber(@Header("authorization") String mAccessToken, @Field("newNumber") String mNewNumber);
+    Call<Response> editPhoneNumber(@Header("authorization") String mAccessToken, @PartMap HashMap<String, RequestBody> map);
 
 //    /**
 //     * @param map
