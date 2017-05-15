@@ -8,6 +8,7 @@ import java.util.HashMap;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -18,6 +19,7 @@ import retrofit2.http.PUT;
 import retrofit2.http.PartMap;
 
 import static com.skeleton.constant.ApiKeyConstant.AUTHORIZATION;
+import static com.skeleton.retrofit.ApiInterface.USER_UPDATE_PROFILE;
 
 /**
  * Developer: Saurabh Verma
@@ -30,6 +32,7 @@ public interface ApiInterface {
     String USER_PROFILE = "api/user/getProfile";
     String USER_OTP = "api/user/resendOTP";
     String USER_VERFIY_OTP = "api/user/verifyOTP";
+    String USER_UPDATE_PROFILE = "api/user/updateProfile";
 
     /**
      * Api Call for user signup
@@ -69,13 +72,21 @@ public interface ApiInterface {
     Call<CommonResponse> resendOtp(@Header("authorization") String mAccessToken);
 
     /**
-     *
      * @param mAccessToken Access to the User Account
-     * @param map HashMap tp user details
+     * @param map          HashMap tp user details
      * @return null
      */
     @PUT(USER_VERFIY_OTP)
-    Call<CommonResponse> ConfirmOtp(@Header("authorization") String mAccessToken, @FieldMap HashMap<String, String> map);
+    Call<CommonResponse> confirmOtp(@Header("authorization") String mAccessToken, @Body HashMap<String, String> map);
+
+    /**
+     *
+     * @param mAccessToken Access to the User Account
+     * @param mNewNumber updated number by User
+     * @return
+     */
+    @PUT(USER_UPDATE_PROFILE)
+    Call<CommonResponse> editPhoneNumber(@Header("authorization") String mAccessToken, @Field("newNumber") String mNewNumber);
 
 //    /**
 //     * @param map

@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.skeleton.R;
 import com.skeleton.constant.AppConstant;
@@ -37,8 +38,13 @@ public class OTPActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otp);
         init();
-        tvPhoneNo.setText(mPhoneNo);
+        Paper.init(this);
+        tvPhoneNo.setText(mCountryCode + " " + mPhoneNo);
+        tvButtonResendOtp.setOnClickListener(this);
+        tvButtonEditNumber.setOnClickListener(this);
+        btnVerifiyOTP.setOnClickListener(this);
         EditTextUtil.moveFrontAndBackAutomatic(1, etOtpDigit1, etOtpDigit2, etOtpDigit3, etOtpDigit4);
+
     }
 
     /**
@@ -59,27 +65,55 @@ public class OTPActivity extends BaseActivity {
 
     @Override
     public void onClick(final View v) {
+        super.onClick(v);
         switch (v.getId()) {
             case R.id.tvButtonEditNumber:
-                Log.d("debug", "Button Edit Button");
+                Log.d("debug", "tv Button Edit Number");
                 break;
             case R.id.tvButtonResendOTP:
-                Log.d("debug", "button resend button");
+                resendOTP();
                 break;
             case R.id.btnVerifiyOTP:
                 verifiyOTP();
                 break;
-
+            default:
+                Log.d("debug", "end my world");
+                break;
         }
-
     }
 
+    /**
+     * @return OTP
+     */
     public String getOTPCode() {
         mOTPCode = etOtpDigit1.getText().toString() + etOtpDigit2.getText().toString()
                 + etOtpDigit3.getText().toString() + etOtpDigit4.getText().toString();
+        Log.d("debug", mOTPCode);
         return mOTPCode;
     }
 
+    public void resendOTP() {
+        ApiInterface apiInterface = RestClient.getApiInterface();
+        apiInterface.resendOtp("bearer " + Paper.book().read(KEY_ACCESS_TOKEN).toString()).enqueue(
+                new ResponseResolver<CommonResponse>(this, true, true) {
+                    @Override
+                    public void success(final CommonResponse commonResponse) {
+                        if ("200".equals(commonResponse.getStatusCode())) {
+                            Toast.makeText(OTPActivity.this, "new Verification code has been sent", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void failure(final APIError error) {
+                        Log.d("debud","failure to resend otp");
+                    }
+                }
+        );
+    }
+
+    /**
+     * send request tot server to verifiy otp
+     */
     public void verifiyOTP() {
         HashMap<String, String> hashMap = new CommonParams.Builder()
                 .add(AppConstant.KEY_FRAGMENT_COUNTRY_CODE, mCountryCode)
@@ -87,16 +121,19 @@ public class OTPActivity extends BaseActivity {
                 .add(AppConstant.KEY_FRAGMENT_OTPCODE, getOTPCode()).build().getMap();
 
         ApiInterface apiInterface = RestClient.getApiInterface();
-        apiInterface.ConfirmOtp(Paper.book().read(KEY_ACCESS_TOKEN).toString(), hashMap).enqueue(new ResponseResolver<CommonResponse>(this, true, true) {
-            @Override
-            public void success(final CommonResponse commonResponse) {
+        apiInterface.confirmOtp("bearer " + Paper.book().read(KEY_ACCESS_TOKEN).toString(), hashMap).enqueue(
+                new ResponseResolver<CommonResponse>(this, true, true) {
+                    @Override
+                    public void success(final CommonResponse commonResponse) {
+                        if ("200".equals(commonResponse.getStatusCode())) {
+                            Log.d("debug", "verified otp");
+                        }
+                    }
 
-            }
-
-            @Override
-            public void failure(final APIError error) {
-
-            }
-        });
+                    @Override
+                    public void failure(final APIError error) {
+                        Log.e("debug", error.getMessage());
+                    }
+                });
     }
 }
