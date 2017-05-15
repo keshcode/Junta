@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.skeleton.activity.ProfileActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_small">
+
+        <ImageView
+            android:id="@+id/ivStepCompleteBackground"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/background_parts"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/ivStepCompleteBackground"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="6dp"
+            android:src="@drawable/one_step"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/ivStepCompleteBackground"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="6dp"
+            android:src="@drawable/step_two"/>
+    </RelativeLayout>
+
+    <com.skeleton.util.customview.CustomViewPager
+        android:id="@+id/vpProfile"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

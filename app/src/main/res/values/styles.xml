@@ -120,4 +120,14 @@
         <item name="android:textSize">@dimen/font_xlarge</item>
     </style>
 
+    <!--Style for item Selector Text View -->
+    <style name="TVselector">
+        <item name="android:layout_width">5dp</item>
+        <item name="android:layout_height">5dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_margin">@dimen/spacing_tiny</item>
+        <item name="android:padding">@dimen/spacing_small</item>
+        <item name="android:background">@drawable/curved_solid_shape</item>
+    </style>
+
 </resources>
