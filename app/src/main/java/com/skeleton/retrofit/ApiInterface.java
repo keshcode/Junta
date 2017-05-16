@@ -16,6 +16,7 @@ import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.PartMap;
+import retrofit2.http.Query;
 
 import static com.skeleton.constant.ApiKeyConstant.AUTHORIZATION;
 
@@ -31,6 +32,8 @@ public interface ApiInterface {
     String USER_OTP = "api/user/resendOTP";
     String USER_VERFIY_OTP = "api/user/verifyOTP";
     String USER_UPDATE_PROFILE = "api/user/updateProfile";
+    String USER_PROFILE_CONSTANTS = "/api/profile/constants";
+    String CATEGORY_LIST = "/api/category/list";
 
     /**
      * Api Call for user signup
@@ -85,6 +88,24 @@ public interface ApiInterface {
     @Multipart
     @PUT(USER_UPDATE_PROFILE)
     Call<Response> editPhoneNumber(@Header("authorization") String mAccessToken, @PartMap HashMap<String, RequestBody> map);
+
+    /**
+     * gets user profile constants
+     *
+     * @return response model of user profile constant
+     */
+    @GET(USER_PROFILE_CONSTANTS)
+    Call<com.skeleton.model.userProfile.Response> getUserProfileConstants();
+
+    /**
+     * @param mAccessToken Access to the user account
+     * @param mInterest    prefernces
+     * @return catergory list for step 2 profile
+     */
+    @GET(CATEGORY_LIST)
+    Call<com.skeleton.model.interestCatergories.Response> getCategoryList(@Header("authorization") String mAccessToken,
+                                                                          @Query("requestType") String mInterest);
+
 
 //    /**
 //     * @param map

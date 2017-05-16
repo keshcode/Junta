@@ -119,6 +119,7 @@ public class SplashActivity extends BaseActivity implements FCMTokenInterface {
     public void onTokenReceived(final String token) {
         Log.e(TAG, token);
         String mAccessToken = CommonData.getAccessToken();
+        android.util.Log.d("debug", CommonData.getAccessToken());
         directToActivty(mAccessToken);
         finish();
     }
@@ -134,18 +135,18 @@ public class SplashActivity extends BaseActivity implements FCMTokenInterface {
             apiInterface.userProfile("bearer " + mAccessToken).enqueue(new ResponseResolver<Response>(this, true, true) {
                 @Override
                 public void success(final Response response) {
-                    if (!response.getData().getUserDetails().getPhoneVerified()) {
-                        CommonData.setUserData(response.getData().getUserDetails());
-                        Intent intent = new Intent(SplashActivity.this, OTPActivity.class);
-                        startActivity(intent);
-                    } else {
-                        if (response.getData().getUserDetails().getStep1CompleteOrSkip()
-                                && response.getData().getUserDetails().getStep2CompleteOrSkip()) {
-                            startActivity(new Intent(SplashActivity.this, HomeActivty.class));
-                        } else {
-                            startActivity(new Intent(SplashActivity.this, SetProfileActivity.class));
-                        }
-                    }
+//                    if (!response.getData().getUserDetails().getPhoneVerified()) {
+//                        CommonData.setUserData(response.getData().getUserDetails());
+//                        Intent intent = new Intent(SplashActivity.this, OTPActivity.class);
+//                        startActivity(intent);
+//                    } else {
+//                        if (response.getData().getUserDetails().getStep1CompleteOrSkip()
+//                                && response.getData().getUserDetails().getStep2CompleteOrSkip()) {
+//                            startActivity(new Intent(SplashActivity.this, HomeActivty.class));
+//                        } else {
+                    startActivity(new Intent(SplashActivity.this, SetProfileActivity.class));
+//                        }
+//                    }
                 }
 
                 @Override

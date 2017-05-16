@@ -38,4 +38,52 @@
 
     </LinearLayout>
 
+    <com.skeleton.util.customview.MaterialEditText
+        android:id="@+id/etRelationshipHistory"
+        style="@style/EtSpinnerTheme"
+        android:hint="@string/edittext_msg_relationship_history"
+        />
+
+    <com.skeleton.util.customview.MaterialEditText
+        android:id="@+id/etEthnicity"
+        style="@style/EtSpinnerTheme"
+        android:hint="@string/edittext_msg_ethnicity"
+        />
+
+    <com.skeleton.util.customview.MaterialEditText
+        android:id="@+id/etReligion"
+        style="@style/EtSpinnerTheme"
+        android:hint="@string/edittext_msg_religion"
+        />
+
+    <com.skeleton.util.customview.MaterialEditText
+        android:id="@+id/etHeight"
+        style="@style/EtSpinnerTheme"
+        android:hint="@string/edittext_msg_height"
+        />
+
+    <com.skeleton.util.customview.MaterialEditText
+        android:id="@+id/etBodyType"
+        style="@style/EtSpinnerTheme"
+        android:hint="@string/edittext_msg_body_type"
+        />
+
+    <com.skeleton.util.customview.MaterialEditText
+        android:id="@+id/etSmoking"
+        style="@style/EtSpinnerTheme"
+        android:hint="@string/edittext_msg_smoking"
+        />
+
+    <com.skeleton.util.customview.MaterialEditText
+        android:id="@+id/etDrinking"
+        style="@style/EtSpinnerTheme"
+        android:hint="@string/edittext_msg_drinking"
+        />
+
+    <com.skeleton.util.customview.MaterialEditText
+        android:id="@+id/etOrientation"
+        style="@style/EtSpinnerTheme"
+        android:hint="@string/edittext_msg_orientation"
+        />
+
 </LinearLayout>

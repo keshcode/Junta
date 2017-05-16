@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/ivInterest"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_gravity="center"
+            android:src="@drawable/com_facebook_profile_picture_blank_square"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/ivOnSelectedShade"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_gravity="center"
+            android:src="@color/transparent_gray_light"
+            app:civ_border_color="@color/colorPrimaryDark"
+            app:civ_border_width="2dp"/>
+
+        <ImageView
+            android:id="@+id/ivCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/ivInterest"
+            android:layout_centerInParent="true"
+            android:background="@color/transparent"
+            android:src="@drawable/check_mark"/>
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvInterestName"
+        style="@style/TvTheme"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/ivInterest"
+        android:layout_gravity="center"
+        android:text="Charity"
+        android:textColor="@color/black"/>
+</LinearLayout>

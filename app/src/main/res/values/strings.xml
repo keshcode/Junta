@@ -93,5 +93,14 @@
     <string name="button_submit">Submit</string>
 
     <string name="edittext_msg_new_Number">Enter New Number</string>
+    <string name="edittext_msg_relationship_history">Relationship history</string>
+    <string name="edittext_msg_ethnicity">Ethnicity</string>
+    <string name="edittext_msg_religion">Religion</string>
+    <string name="edittext_msg_height">Height</string>
+    <string name="edittext_msg_body_type">Body Type</string>
+    <string name="edittext_msg_smoking">Smoking</string>
+    <string name="edittext_msg_drinking">Drinking</string>
+    <string name="edittext_msg_orientation">Orientation</string>
 
+    <string name="msg_add_interests">Add Your 5 Interests</string>
 </resources>

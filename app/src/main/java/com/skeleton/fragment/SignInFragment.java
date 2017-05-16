@@ -38,15 +38,24 @@ public class SignInFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_signin, container, false);
         init(view);
         Paper.init(getContext());
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
+        btnLogin.setOnClickListener(this);
+        return view;
+    }
+
+    @Override
+    public void onClick(final View v) {
+        super.onClick(v);
+        switch (v.getId()) {
+            case R.id.btnLogin:
+                android.util.Log.d("debug", "btn login clicked");
                 if (validate()) {
+                    android.util.Log.d("debug", "validation complete");
                     verifyLogin();
                 }
-            }
-        });
-        return view;
+                break;
+            default:
+                break;
+        }
     }
 
     /**
@@ -66,7 +75,8 @@ public class SignInFragment extends BaseFragment {
         apiInterface.userLogin(null, hashMap).enqueue(new ResponseResolver<Response>(getContext(), false, false) {
             @Override
             public void success(final Response response) {
-                if ("200".equals(response.getStatusCode())) {
+                Log.d("debug", response.getStatusCode().toString());
+                if ("200".equals(response.getStatusCode().toString())) {
                     CommonData.saveAccessToken(response.getData().getAccessToken());
                     CommonData.setUserData(response.getData().getUserDetails());
                     Log.d("debug", "accEss ALLOWED");
@@ -75,7 +85,7 @@ public class SignInFragment extends BaseFragment {
 
             @Override
             public void failure(final APIError error) {
-
+                android.util.Log.d("debug", error.getMessage());
             }
         });
     }

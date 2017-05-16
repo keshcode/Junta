@@ -233,10 +233,6 @@ public class SignUpFragment extends Fragment {
                             etEmailAddr, etPassword, etPhoneNo);
                     CommonData.saveAccessToken(response.getData().getAccessToken());
                     CommonData.setUserData(response.getData().getUserDetails());
-//                    Intent intent = new Intent(getActivity(), DisplayResponseActivity.class);
-//                    intent.putExtra("response", response);
-//                    startActivity(intent);
-
                 }
 
             }
