@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
 import com.skeleton.R;
-import com.skeleton.fragment.Step2ProfileFragment;
+import com.skeleton.fragment.Step1ProfileFragment;
 
 /**
  * Sets the User Profile Data
@@ -18,7 +18,7 @@ public class SetProfileActivity extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_profile);
-        replaceFragment(new Step2ProfileFragment());
+        replaceFragment(new Step1ProfileFragment());
     }
 
     /**

@@ -91,6 +91,7 @@
     <string name="button_edit_number">Edit Number</string>
     <string name="button_verify">Verifiy</string>
     <string name="button_submit">Submit</string>
+    <string name="button_Save_and_Continue">Save And Continue</string>
 
     <string name="edittext_msg_new_Number">Enter New Number</string>
     <string name="edittext_msg_relationship_history">Relationship history</string>

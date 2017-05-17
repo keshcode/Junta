@@ -48,6 +48,7 @@ public class RecyclerAdaptor extends RecyclerView.Adapter<RecyclerAdaptor.ViewHo
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         final Categories categories = categoriesList.get(position);
         holder.tvInterestName.setText(categories.getName());
+        //Picasso.with(context).load(categories.getPicURL().getThumbnail()).into(holder.ivInterest);
         holder.ivInterest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
@@ -63,7 +64,6 @@ public class RecyclerAdaptor extends RecyclerView.Adapter<RecyclerAdaptor.ViewHo
                 ((Step2ProfileFragment) fragment).wrapperSetSelectTag(map.size());
             }
         });
-        //Picasso.with(context).load(categories.getPicURL().getThumbnail()).into(holder.ivInterest);
     }
 
 
