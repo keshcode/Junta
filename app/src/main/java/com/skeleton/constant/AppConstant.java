@@ -38,6 +38,14 @@ public interface AppConstant {
     String KEY_FRAGMENT_FLUSH_PREVIOUS_SESSIOINS = "flushPreviousSessions";
     String KEY_FRAGMENT_USER_DETAILS = "userDetails";
     String KEY_FRAGMENT_NEW_PHONE_NUMBER = "newNumber";
+    String KEY_USER_RELATIONSHIP_HISTORY = "relationshipHistory";
+    String KEY_USER_ETHNICITY = "ethnicity";
+    String KEY_USER_RELIGION = "religion";
+    String KEY_USER_HEIGHT = "height";
+    String KEY_USER_BODY_TYPE = "bodyType";
+    String KEY_USER_SMOKING = "smoking";
+    String KEY_USER_DRINKING = "drinking";
+    String KEY_USER_ORIENTATION = "orientation";
 
     //KEY TO ACCESS
     String KEY_ACCESS_TOKEN = "accessToken";

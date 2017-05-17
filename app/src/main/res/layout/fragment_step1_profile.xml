@@ -36,54 +36,74 @@
             android:id="@+id/tvSelector7"
             style="@style/TVselector"/>
 
+        <TextView
+            android:id="@+id/tvSelector8"
+            style="@style/TVselector"/>
+
     </LinearLayout>
 
-    <com.skeleton.util.customview.MaterialEditText
-        android:id="@+id/etRelationshipHistory"
-        style="@style/EtSpinnerTheme"
-        android:hint="@string/edittext_msg_relationship_history"
-        />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <com.skeleton.util.customview.MaterialEditText
-        android:id="@+id/etEthnicity"
-        style="@style/EtSpinnerTheme"
-        android:hint="@string/edittext_msg_ethnicity"
-        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <com.skeleton.util.customview.MaterialEditText
-        android:id="@+id/etReligion"
-        style="@style/EtSpinnerTheme"
-        android:hint="@string/edittext_msg_religion"
-        />
+            <com.skeleton.util.customview.MaterialEditText
+                android:id="@+id/etRelationshipHistory"
+                style="@style/EtSpinnerTheme"
+                android:hint="@string/edittext_msg_relationship_history"
+                />
 
-    <com.skeleton.util.customview.MaterialEditText
-        android:id="@+id/etHeight"
-        style="@style/EtSpinnerTheme"
-        android:hint="@string/edittext_msg_height"
-        />
+            <com.skeleton.util.customview.MaterialEditText
+                android:id="@+id/etEthnicity"
+                style="@style/EtSpinnerTheme"
+                android:hint="@string/edittext_msg_ethnicity"
+                />
 
-    <com.skeleton.util.customview.MaterialEditText
-        android:id="@+id/etBodyType"
-        style="@style/EtSpinnerTheme"
-        android:hint="@string/edittext_msg_body_type"
-        />
+            <com.skeleton.util.customview.MaterialEditText
+                android:id="@+id/etReligion"
+                style="@style/EtSpinnerTheme"
+                android:hint="@string/edittext_msg_religion"
+                />
 
-    <com.skeleton.util.customview.MaterialEditText
-        android:id="@+id/etSmoking"
-        style="@style/EtSpinnerTheme"
-        android:hint="@string/edittext_msg_smoking"
-        />
+            <com.skeleton.util.customview.MaterialEditText
+                android:id="@+id/etHeight"
+                style="@style/EtSpinnerTheme"
+                android:hint="@string/edittext_msg_height"
+                />
 
-    <com.skeleton.util.customview.MaterialEditText
-        android:id="@+id/etDrinking"
-        style="@style/EtSpinnerTheme"
-        android:hint="@string/edittext_msg_drinking"
-        />
+            <com.skeleton.util.customview.MaterialEditText
+                android:id="@+id/etBodyType"
+                style="@style/EtSpinnerTheme"
+                android:hint="@string/edittext_msg_body_type"
+                />
 
-    <com.skeleton.util.customview.MaterialEditText
-        android:id="@+id/etOrientation"
-        style="@style/EtSpinnerTheme"
-        android:hint="@string/edittext_msg_orientation"
-        />
+            <com.skeleton.util.customview.MaterialEditText
+                android:id="@+id/etSmoking"
+                style="@style/EtSpinnerTheme"
+                android:hint="@string/edittext_msg_smoking"
+                />
 
+            <com.skeleton.util.customview.MaterialEditText
+                android:id="@+id/etDrinking"
+                style="@style/EtSpinnerTheme"
+                android:hint="@string/edittext_msg_drinking"
+                />
+
+            <com.skeleton.util.customview.MaterialEditText
+                android:id="@+id/etOrientation"
+                style="@style/EtSpinnerTheme"
+                android:hint="@string/edittext_msg_orientation"
+                />
+
+            <Button
+                android:id="@+id/btnNext"
+                style="@style/btnTheme"
+                android:layout_alignParentBottom="true"
+                android:text="@string/button_next"/>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
