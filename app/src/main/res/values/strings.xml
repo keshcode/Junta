@@ -93,6 +93,7 @@
     <string name="button_submit">Submit</string>
     <string name="button_Save_and_Continue">Save And Continue</string>
     <string name="button_next">Next</string>
+    <string name="button_skip">Skip >></string>
 
     <string name="edittext_msg_new_Number">Enter New Number</string>
     <string name="edittext_msg_relationship_history">Relationship history</string>
@@ -103,6 +104,10 @@
     <string name="edittext_msg_smoking">Smoking</string>
     <string name="edittext_msg_drinking">Drinking</string>
     <string name="edittext_msg_orientation">Orientation</string>
+
+    <string name="title_otp_verfication">OTP Verification</string>
+    <string name="title_edit_number">Edit Number</string>
+    <string name="title_update_profile">Update Profile</string>
 
     <string name="msg_add_interests">Add Your 5 Interests</string>
 </resources>

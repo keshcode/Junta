@@ -3,6 +3,7 @@ package com.skeleton.adapter;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +37,7 @@ public class RecyclerAdaptor extends RecyclerView.Adapter<RecyclerAdaptor.ViewHo
         this.context = context;
         this.fragment = fragment;
         map = new HashMap<String, String>();
+
     }
 
     @Override
@@ -47,23 +49,42 @@ public class RecyclerAdaptor extends RecyclerView.Adapter<RecyclerAdaptor.ViewHo
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         final Categories categories = categoriesList.get(position);
+        if (categories.getChecked() == null) {
+            categories.setChecked(false);
+        }
         holder.tvInterestName.setText(categories.getName());
         //Picasso.with(context).load(categories.getPicURL().getThumbnail()).into(holder.ivInterest);
+
         holder.ivInterest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-                if (holder.ivCheck.getVisibility() == View.INVISIBLE && (map.size() < 5)) {
+                int limit = ((Step2ProfileFragment) fragment).getCategorylistsize();
+                Log.d("debug", String.valueOf(limit));
+                notifyDataSetChanged();
+                if (holder.ivCheck.getVisibility() == View.INVISIBLE && (limit < 5)) {
+                    categories.setChecked(true);
+                    Log.d("debug", "added to list");
                     holder.ivCheck.setVisibility(View.VISIBLE);
-                    map.put(categories.getName(), categories.getName());
+                    ((Step2ProfileFragment) fragment).addElementInCategoryList(categories.get_id());
                     holder.ivOnSelectedShade.setVisibility(View.VISIBLE);
                 } else {
+                    categories.setChecked(false);
+                    Log.d("debug", "removed from list");
                     holder.ivCheck.setVisibility(View.INVISIBLE);
-                    map.remove(categories.getName());
+                    ((Step2ProfileFragment) fragment).removeElementFromCategoryLIst(categories.get_id());
                     holder.ivOnSelectedShade.setVisibility(View.INVISIBLE);
                 }
-                ((Step2ProfileFragment) fragment).wrapperSetSelectTag(map.size());
+                limit = ((Step2ProfileFragment) fragment).getCategorylistsize();
+                ((Step2ProfileFragment) fragment).wrapperSetSelectTag(limit);
             }
         });
+        if (!categories.getChecked()) {
+            holder.ivCheck.setVisibility(View.INVISIBLE);
+            holder.ivOnSelectedShade.setVisibility(View.INVISIBLE);
+        } else {
+            holder.ivCheck.setVisibility(View.VISIBLE);
+            holder.ivOnSelectedShade.setVisibility(View.VISIBLE);
+        }
     }
 
 

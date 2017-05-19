@@ -22,6 +22,8 @@
         android:layout_below="@+id/llToolbar"
         android:background="@color/white"
         android:orientation="vertical"
+        android:paddingEnd="@dimen/spacing_normal"
+        android:paddingStart="@dimen/spacing_normal"
         android:paddingTop="@dimen/spacing_large">
 
 
@@ -52,7 +54,9 @@
 
         <TextView
             style="@style/TvOtpNo"
-            android:text="@string/msg_enter_otp"/>
+            android:gravity="center"
+            android:text="@string/msg_enter_otp"
+            android:textSize="@dimen/font_large"/>
 
         <TextView
             android:id="@+id/tvPhoneNo"

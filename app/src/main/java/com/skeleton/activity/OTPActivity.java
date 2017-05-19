@@ -15,7 +15,6 @@ import com.skeleton.fragment.VerifiyOTPFragment;
 public class OTPActivity extends BaseActivity {
     private FrameLayout fmDisplayOTPFollow;
 
-
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

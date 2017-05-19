@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,7 +17,7 @@ import com.skeleton.R;
 import com.skeleton.activity.OTPActivity;
 import com.skeleton.constant.AppConstant;
 import com.skeleton.database.CommonData;
-import com.skeleton.model.Data;
+import com.skeleton.model.UserDetails;
 import com.skeleton.retrofit.APIError;
 import com.skeleton.retrofit.ApiInterface;
 import com.skeleton.retrofit.CommonParams;
@@ -34,20 +35,22 @@ import java.util.HashMap;
 public class VerifiyOTPFragment extends BaseFragment {
     private String mPhoneNo, mCountryCode, mOTPCode;
     private TextView tvPhoneNo;
-    private TextView tvButtonResendOtp, tvButtonEditNumber;
+    private TextView tvButtonResendOtp, tvButtonEditNumber, tvTitle;
     private EditText etOtpDigit1, etOtpDigit2, etOtpDigit3, etOtpDigit4;
-    private Button btnVerifiyOTP;
-    private Bundle mBundle;
-    private Data mData;
+    private Button btnVerifiyOTP, btnSkip;
+    private ImageView ivToolbarbtn;
 
     @Nullable
     @Override
     public View onCreateView(final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable final Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_verifiy_otp, container, false);
         init(view);
-        tvPhoneNo.setText(mCountryCode + " " + mPhoneNo);
+        btnSkip.setVisibility(View.INVISIBLE);
+        tvPhoneNo.setText("(" + mCountryCode + ") " + mPhoneNo);
         tvButtonResendOtp.setOnClickListener(this);
+        tvTitle.setText(getString(R.string.title_otp_verfication));
         tvButtonEditNumber.setOnClickListener(this);
+        ivToolbarbtn.setOnClickListener(this);
         btnVerifiyOTP.setOnClickListener(this);
         EditTextUtil.moveFrontAndBackAutomatic(1, etOtpDigit1, etOtpDigit2, etOtpDigit3, etOtpDigit4);
         return view;
@@ -66,7 +69,10 @@ public class VerifiyOTPFragment extends BaseFragment {
         etOtpDigit4 = (EditText) view.findViewById(R.id.etOtpDigit4);
         tvButtonEditNumber = (TextView) view.findViewById(R.id.tvButtonEditNumber);
         tvButtonResendOtp = (TextView) view.findViewById(R.id.tvButtonResendOTP);
+        tvTitle = (TextView) view.findViewById(R.id.tvTitle);
         btnVerifiyOTP = (Button) view.findViewById(R.id.btnVerifiyOTP);
+        btnSkip = (Button) view.findViewById(R.id.btnskip);
+        ivToolbarbtn = (ImageView) view.findViewById(R.id.ivToolbarBtn);
         mPhoneNo = CommonData.getUserData().getPhoneNo();
         mCountryCode = CommonData.getUserData().getCountryCode();
     }
@@ -83,6 +89,9 @@ public class VerifiyOTPFragment extends BaseFragment {
                 break;
             case R.id.btnVerifiyOTP:
                 verifiyOTP();
+                break;
+            case R.id.ivToolbarBtn:
+                ((OTPActivity) getActivity()).finish();
                 break;
             default:
                 Log.d("debug", "end my world");
@@ -137,7 +146,10 @@ public class VerifiyOTPFragment extends BaseFragment {
                     @Override
                     public void success(final CommonResponse commonResponse) {
                         if ("200".equals(commonResponse.getStatusCode())) {
-                            Log.d("debug", "verified otp");
+                            UserDetails userData = CommonData.getUserData();
+                            userData.setPhoneVerified(true);
+                            CommonData.setUserData(userData);
+                            ((OTPActivity) getActivity()).finish();
                         }
                     }
 

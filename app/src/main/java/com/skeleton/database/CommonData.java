@@ -85,5 +85,7 @@ public final class CommonData implements PaperDbConstant {
     public static UserDetails getUserData() {
         return Paper.book().read(AppConstant.KEY_FRAGMENT_USER_DETAILS);
     }
+
+
 }
 

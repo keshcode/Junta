@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.skeleton.R;
+import com.skeleton.activity.SignInSignUp;
 import com.skeleton.constant.AppConstant;
 import com.skeleton.database.CommonData;
 import com.skeleton.model.Response;
@@ -79,6 +80,7 @@ public class SignInFragment extends BaseFragment {
                 if ("200".equals(response.getStatusCode().toString())) {
                     CommonData.saveAccessToken(response.getData().getAccessToken());
                     CommonData.setUserData(response.getData().getUserDetails());
+                    ((SignInSignUp) getActivity()).directToActivty(CommonData.getAccessToken());
                     Log.d("debug", "accEss ALLOWED");
                 }
             }

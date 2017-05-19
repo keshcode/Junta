@@ -7,6 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.skeleton.R;
 import com.skeleton.activity.OTPActivity;
@@ -31,13 +34,17 @@ import okhttp3.RequestBody;
 public class EditNumberFragment extends BaseFragment {
     private String mAccessToken, mNewNumber;
     private MaterialEditText etNewNumber;
-    private Button btnSubmit;
+    private Button btnSubmit, btnSkip;
+    private TextView tvTitle;
+    private ImageView ivToolbarbtn;
 
     @Nullable
     @Override
     public View onCreateView(final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable final Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_edit_number, container, false);
         init(view);
+        btnSkip.setVisibility(View.GONE);
+        tvTitle.setText(getString(R.string.title_edit_number));
         mAccessToken = CommonData.getAccessToken();
         btnSubmit.setOnClickListener(this);
         return view;
@@ -48,8 +55,15 @@ public class EditNumberFragment extends BaseFragment {
         super.onClick(v);
         switch (v.getId()) {
             case R.id.btnSubmit:
-                mNewNumber = etNewNumber.getText().toString();
-                updateNumber();
+                mNewNumber = etNewNumber.getText().toString().trim();
+                if (mNewNumber.length() != 0) {
+                    updateNumber();
+                } else {
+                    Toast.makeText(getActivity(), "Number is required", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case R.id.ivToolbarBtn:
+                ((OTPActivity) getActivity()).replaceFragment(new VerifiyOTPFragment());
                 break;
             default:
                 break;
@@ -64,6 +78,9 @@ public class EditNumberFragment extends BaseFragment {
     public void init(final View view) {
         etNewNumber = (MaterialEditText) view.findViewById(R.id.etNewNumber);
         btnSubmit = (Button) view.findViewById(R.id.btnSubmit);
+        btnSkip = (Button) view.findViewById(R.id.btnskip);
+        tvTitle = (TextView) view.findViewById(R.id.tvTitle);
+        ivToolbarbtn = (ImageView) view.findViewById(R.id.ivToolbarBtn);
     }
 
 
@@ -74,7 +91,7 @@ public class EditNumberFragment extends BaseFragment {
         HashMap<String, RequestBody> multipartParams = new MultipartParams.Builder()
                 .add(AppConstant.KEY_FRAGMENT_NEW_PHONE_NUMBER, mNewNumber).build().getMap();
         ApiInterface apiInterface = RestClient.getApiInterface();
-        apiInterface.editPhoneNumber("bearer " + mAccessToken, multipartParams).enqueue(new ResponseResolver<Response>(getActivity(), false, false) {
+        apiInterface.updateProfile("bearer " + mAccessToken, multipartParams).enqueue(new ResponseResolver<Response>(getActivity(), true, true) {
             @Override
             public void success(final Response response) {
                 Log.d("debug", response.getStatusCode().toString());

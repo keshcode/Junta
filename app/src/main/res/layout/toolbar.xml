@@ -2,12 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/llToolbar"
                 android:layout_width="match_parent"
-
                 android:layout_height="?attr/actionBarSize"
-                android:background="@color/transparent">
+                android:background="@color/transparent_black">
 
     <ImageView
-        android:id="@+id/ivMenu"
+        android:id="@+id/ivToolbarBtn"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_centerVertical="true"
@@ -20,7 +19,19 @@
         style="@style/TvTheme"
         android:layout_width="wrap_content"
         android:layout_centerInParent="true"
-        android:textSize="20sp"/>
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
 
+    <Button
+        android:id="@+id/btnskip"
+        style="@style/btnTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="@dimen/spacing_small"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:text="@string/button_skip"
+        android:textSize="@dimen/font_small"/>
 
 </RelativeLayout>

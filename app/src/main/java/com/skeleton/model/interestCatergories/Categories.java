@@ -20,6 +20,21 @@ public class Categories {
     private PicURL picURL;
     @SerializedName("name")
     private String name;
+    private Boolean isChecked;
+
+    /**
+     * @return if category is checked or not
+     */
+    public Boolean getChecked() {
+        return isChecked;
+    }
+
+    /**
+     * @param checked sets if Category is checked or not
+     */
+    public void setChecked(final Boolean checked) {
+        isChecked = checked;
+    }
 
     /**
      * @return id to the category

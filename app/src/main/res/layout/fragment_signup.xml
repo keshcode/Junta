@@ -1,158 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.NestedScrollView
-    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/spacing_large"
+        android:layout_marginBottom="@dimen/spacing_normal"
+        android:layout_marginEnd="@dimen/spacing_small"
+        android:layout_marginStart="@dimen/spacing_tiny"
+        android:orientation="vertical">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/ivProfile"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_gravity="center"
+            android:src="@drawable/userpic_date_request"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="2dp"/>
+
+
+        <com.skeleton.util.customview.MaterialEditText
+            android:id="@+id/etName"
+            style="@style/EtTheme"
+            android:hint="@string/name"
+            android:inputType="textEmailAddress"
+            android:paddingTop="@dimen/spacing_normal"/>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/spacing_large"
-            android:layout_marginEnd="@dimen/spacing_small"
-            android:layout_marginStart="@dimen/spacing_tiny"
-            android:orientation="vertical">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/ivProfile"
-                android:layout_width="96dp"
-                android:layout_height="96dp"
-                android:layout_gravity="center"
-                android:src="@drawable/com_facebook_profile_picture_blank_square"
-                app:civ_border_color="#FF000000"
-                app:civ_border_width="2dp"/>
-
+            android:layout_height="wrap_content">
 
             <com.skeleton.util.customview.MaterialEditText
-                android:id="@+id/etName"
+                android:id="@+id/etCountryCode"
                 style="@style/EtTheme"
-                android:hint="@string/name"
-                android:inputType="textEmailAddress"
-                android:paddingTop="@dimen/spacing_normal"/>
+                android:layout_weight="3"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:inputType="number"
+                android:maxLength="@string/max_phone_no_length"
+                android:paddingEnd="0dp"
+                android:text="+91"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_xlarge"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.skeleton.util.customview.MaterialEditText
-                    android:id="@+id/etCountryCode"
-                    style="@style/EtTheme"
-                    android:layout_weight="3"
-                    android:editable="false"
-                    android:text="+91"
-                    android:textSize="@dimen/font_xlarge"
-                    android:textColor="@color/black"
-                    android:inputType="number"
-                    android:maxLength="@string/max_phone_no_length"
-                    android:paddingEnd="0dp"/>
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_marginTop="@dimen/spacing_tiny"
-                    android:layout_height="40dp"
-                    android:background="@color/black"/>
-
-                <com.skeleton.util.customview.MaterialEditText
-                    android:id="@+id/etPhoneNo"
-                    style="@style/EtTheme"
-                    android:hint="@string/contact_number"
-                    android:inputType="number"
-                    android:maxLength="@string/max_phone_no_length"
-                    android:paddingStart="0dp"/>
-            </LinearLayout>
-
-            <com.skeleton.util.customview.MaterialEditText
-                android:id="@+id/etDOB"
-                style="@style/EtTheme"
-                android:hint="@string/dob"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_small">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/spacing_normal"
-                    android:layout_marginStart="@dimen/spacing_tiny"
-                    android:layout_weight="1"
-                    android:text="@string/gender"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/spacing_normal"
-                    />
-
-                <RadioGroup
-                    android:id="@+id/rgGender"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/rbMale"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/spacing_normal"
-                        android:text="male"/>
-
-                    <RadioButton
-                        android:id="@+id/rbFemale"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="female"/>
-                </RadioGroup>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="@dimen/spacing_small"
+            <View
+                android:layout_width="1dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="@dimen/spacing_normal"
                 android:background="@color/black"/>
 
             <com.skeleton.util.customview.MaterialEditText
-                android:id="@+id/etConfirmPassword"
+                android:id="@+id/etPhoneNo"
                 style="@style/EtTheme"
-                android:hint="@string/confirm_password"
-                android:inputType="textPassword"/>
+                android:hint="@string/contact_number"
+                android:inputType="number"
+                android:maxLength="@string/max_phone_no_length"
+                android:paddingStart="0dp"/>
+        </LinearLayout>
 
-            <com.skeleton.util.customview.MaterialEditText
-                android:id="@+id/etEmailAddr"
-                style="@style/EtTheme"
-                android:hint="@string/email_address"
-                android:inputType="textEmailAddress"/>
+        <com.skeleton.util.customview.MaterialEditText
+            android:id="@+id/etDOB"
+            style="@style/EtTheme"
+            android:hint="@string/dob"/>
 
-            <com.skeleton.util.customview.MaterialEditText
-                android:id="@+id/etPassword"
-                style="@style/EtTheme"
-                android:hint="@string/password"
-                android:inputType="textPassword"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_small">
 
-
-            <CheckBox
-                android:id="@+id/cbTermsAndCondi"
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/i_accept"/>
-
-
-            <Button
-                android:id="@+id/btnSignUp"
-                style="@style/btnTheme"
-                android:layout_marginBottom="@dimen/spacing_small"
-                android:layout_marginTop="@dimen/spacing_normal"
-                android:text="@string/sign_up"/>
-
-            <Button
-                android:id="@+id/btnSignInWithFacebook"
-                style="@style/btnTheme"
-                android:layout_marginBottom="@dimen/spacing_normal"
-                android:layout_marginTop="@dimen/spacing_small"
+                android:layout_marginEnd="@dimen/spacing_normal"
+                android:layout_marginStart="@dimen/spacing_tiny"
                 android:layout_weight="1"
-                android:background="@drawable/button_selector_secondary_color"
-                android:text="@string/sign_in_with_facebook"/>
+                android:text="@string/gender"
+                android:textColor="@color/black"
+                android:textSize="@dimen/spacing_normal"
+                />
 
+            <RadioGroup
+                android:id="@+id/rgGender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rbMale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/spacing_normal"
+                    android:text="male"/>
+
+                <RadioButton
+                    android:id="@+id/rbFemale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="female"/>
+            </RadioGroup>
         </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:background="@color/black"/>
+
+        <com.skeleton.util.customview.MaterialEditText
+            android:id="@+id/etEmailAddr"
+            style="@style/EtTheme"
+            android:hint="@string/email_address"
+            android:inputType="textEmailAddress"/>
+
+        <com.skeleton.util.customview.MaterialEditText
+            android:id="@+id/etPassword"
+            style="@style/EtTheme"
+            android:hint="@string/password"
+            android:inputType="textPassword"/>
+
+        <com.skeleton.util.customview.MaterialEditText
+            android:id="@+id/etConfirmPassword"
+            style="@style/EtTheme"
+            android:hint="@string/confirm_password"
+            android:inputType="textPassword"/>
+
+        <CheckBox
+            android:id="@+id/cbTermsAndCondi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/i_accept"/>
+
+
+        <Button
+            android:id="@+id/btnSignUp"
+            style="@style/btnTheme"
+            android:layout_marginBottom="@dimen/spacing_small"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:text="@string/sign_up"/>
+
+        <Button
+            android:id="@+id/btnSignInWithFacebook"
+            style="@style/btnTheme"
+            android:layout_marginBottom="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_weight="1"
+            android:background="@drawable/button_selector_secondary_color"
+            android:text="@string/sign_in_with_facebook"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing_medium"/>
+
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

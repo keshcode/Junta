@@ -12,14 +12,8 @@ import android.provider.Settings;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.skeleton.R;
-import com.skeleton.database.CommonData;
 import com.skeleton.fcm.FCMTokenInterface;
 import com.skeleton.fcm.MyFirebaseInstanceIdService;
-import com.skeleton.model.Response;
-import com.skeleton.retrofit.APIError;
-import com.skeleton.retrofit.ApiInterface;
-import com.skeleton.retrofit.ResponseResolver;
-import com.skeleton.retrofit.RestClient;
 import com.skeleton.util.Log;
 import com.skeleton.util.Util;
 import com.skeleton.util.dialog.CustomAlertDialog;
@@ -118,47 +112,10 @@ public class SplashActivity extends BaseActivity implements FCMTokenInterface {
     @Override
     public void onTokenReceived(final String token) {
         Log.e(TAG, token);
-        String mAccessToken = CommonData.getAccessToken();
-        android.util.Log.d("debug", CommonData.getAccessToken());
-        directToActivty(mAccessToken);
+        startActivity(new Intent(SplashActivity.this, SignInSignUp.class));
         finish();
     }
 
-    /**
-     * direct to Activty as per the profile completed
-     *
-     * @param mAccessToken token access user details
-     */
-    public void directToActivty(final String mAccessToken) {
-        if (mAccessToken != null) {
-            ApiInterface apiInterface = RestClient.getApiInterface();
-            apiInterface.userProfile("bearer " + mAccessToken).enqueue(new ResponseResolver<Response>(this, true, true) {
-                @Override
-                public void success(final Response response) {
-//                    if (!response.getData().getUserDetails().getPhoneVerified()) {
-//                        CommonData.setUserData(response.getData().getUserDetails());
-//                        Intent intent = new Intent(SplashActivity.this, OTPActivity.class);
-//                        startActivity(intent);
-//                    } else {
-//                        if (response.getData().getUserDetails().getStep1CompleteOrSkip()
-//                                && response.getData().getUserDetails().getStep2CompleteOrSkip()) {
-//                            startActivity(new Intent(SplashActivity.this, HomeActivty.class));
-//                        } else {
-                    startActivity(new Intent(SplashActivity.this, SetProfileActivity.class));
-//                        }
-//                    }
-                }
-
-                @Override
-                public void failure(final APIError error) {
-                    android.util.Log.d("debug", "falied response");
-                }
-            });
-        } else {
-            Log.d("debug", "access denied");
-            startActivity(new Intent(this, SignInSignUp.class));
-        }
-    }
 
     @Override
     public void onFailure() {

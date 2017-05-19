@@ -12,9 +12,10 @@
     <color name="black">#000</color>
     <color name="pure_black">#000</color>
     <color name="charcoal_grey">#333c40</color>
+
     <color name="transparent">#0000</color>
     <color name="transparent_gray_light">#CCDBDBDB</color>
-
+    <color name="transparent_black">#59333c40</color>
 
     <color name="button_color_normal">@color/colorPrimary</color>
     <color name="button_color_pressed">@color/colorAccent</color>

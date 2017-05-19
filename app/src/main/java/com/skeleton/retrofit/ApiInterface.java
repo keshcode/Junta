@@ -8,6 +8,7 @@ import java.util.HashMap;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -32,8 +33,10 @@ public interface ApiInterface {
     String USER_OTP = "api/user/resendOTP";
     String USER_VERFIY_OTP = "api/user/verifyOTP";
     String USER_UPDATE_PROFILE = "api/user/updateProfile";
-    String USER_PROFILE_CONSTANTS = "/api/profile/constants";
-    String CATEGORY_LIST = "/api/category/list";
+    String USER_PROFILE_CONSTANTS = "api/profile/constants";
+    String CATEGORY_LIST = "api/category/list";
+    String UPDATE_USER_CATEGORY_INTERESTS = "api/user/selectCategory";
+    String USER_SKIP_STEP = "api/user/skipStep";
 
     /**
      * Api Call for user signup
@@ -87,7 +90,7 @@ public interface ApiInterface {
      */
     @Multipart
     @PUT(USER_UPDATE_PROFILE)
-    Call<Response> editPhoneNumber(@Header("authorization") String mAccessToken, @PartMap HashMap<String, RequestBody> map);
+    Call<Response> updateProfile(@Header("authorization") String mAccessToken, @PartMap HashMap<String, RequestBody> map);
 
     /**
      * gets user profile constants
@@ -106,6 +109,24 @@ public interface ApiInterface {
     Call<com.skeleton.model.interestCatergories.Response> getCategoryList(@Header("authorization") String mAccessToken,
                                                                           @Query("requestType") String mInterest);
 
+    /**
+     * @param mAccessToken access to user account
+     * @param map          hash map
+     * @return commonRespone
+     */
+    @Multipart
+    @PUT(UPDATE_USER_CATEGORY_INTERESTS)
+    Call<CommonResponse> putCategoryInterest(@Header("authorization") String mAccessToken,
+                                             @PartMap HashMap<String, RequestBody> map);
+
+    /**
+     * @param mAccessToken acces to user account
+     * @param mNumber      skip which step
+     * @return common response
+     */
+    @FormUrlEncoded
+    @PUT(USER_SKIP_STEP)
+    Call<CommonResponse> skipStep(@Header("authorization") String mAccessToken, @Field("stepNumber") String mNumber);
 
 //    /**
 //     * @param map

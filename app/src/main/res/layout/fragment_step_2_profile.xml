@@ -2,7 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:orientation="vertical">
+              android:orientation="vertical"
+              android:padding="@dimen/spacing_normal">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="@dimen/spacing_normal">
+
+        <ImageView
+            android:id="@+id/ivStepCompleteBackground"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/background_parts"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/ivStepCompleteBackground"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="6dp"
+            android:src="@drawable/step_two"/>
+    </RelativeLayout>
 
     <TextView
         android:layout_width="wrap_content"
@@ -12,7 +35,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_normal">
 
         <TextView
             android:id="@+id/tvSelector1"
@@ -50,6 +74,7 @@
             android:id="@+id/btnSave"
             style="@style/btnTheme"
             android:layout_alignParentBottom="true"
+            android:layout_marginTop="@dimen/spacing_normal"
             android:text="@string/button_Save_and_Continue"/>
     </RelativeLayout>
 </LinearLayout>

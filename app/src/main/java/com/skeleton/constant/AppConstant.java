@@ -18,6 +18,9 @@ public interface AppConstant {
     int REQ_CODE_DEFAULT_SETTINGS = 16061;
     int REQ_CODE_PLAY_SERVICES_RESOLUTION = 16061;
     int REQ_CODE_SCREEN_OVERLAY = 10101;
+    int REQ_CODE_SCREEN_OTP = 16062;
+    int REQ_CODE_SCREEN_PROFILE_COMPELTE = 16063;
+    int REQ_CODE_SCREEN_HOME = 16064;
 
     //USER_SIGNUP_KEYS
     String KEY_FRAGMENT_FNAME = "firstName";
@@ -46,6 +49,10 @@ public interface AppConstant {
     String KEY_USER_SMOKING = "smoking";
     String KEY_USER_DRINKING = "drinking";
     String KEY_USER_ORIENTATION = "orientation";
+    String KEY_USER_CATERGORY_INTEREST = "interestCategories";
+    String KEY_USER_PROFILE = "userProfile";
+    String KEY_STEP1COMPLETEORSKIPED = "step1CompleteOrSkip";
+    String KEY_STEP2COMPLETEORSKIPED = "step2CompleteOrSkip";
 
     //KEY TO ACCESS
     String KEY_ACCESS_TOKEN = "accessToken";

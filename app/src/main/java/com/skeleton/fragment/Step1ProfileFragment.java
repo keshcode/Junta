@@ -1,6 +1,8 @@
 package com.skeleton.fragment;
 
+import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
@@ -8,10 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.skeleton.R;
+import com.skeleton.activity.SetProfileActivity;
 import com.skeleton.database.CommonData;
+import com.skeleton.model.UserDetails;
 import com.skeleton.model.userProfile.Response;
 import com.skeleton.retrofit.APIError;
 import com.skeleton.retrofit.ApiInterface;
@@ -35,7 +40,8 @@ public class Step1ProfileFragment extends BaseFragment {
     private MaterialEditText etDrinking, etOrientation;
     private TextView tvSelector1, tvSelector2, tvSelector3, tvSelector4, tvSelector5, tvSelector6, tvSelector7, tvSelector8;
     private Response profileConstants;
-    private Button btnNext;
+    private Button btnNext, btnSkip;
+    private ImageView ivToolbarBtn;
 
     @Nullable
     @Override
@@ -43,6 +49,21 @@ public class Step1ProfileFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_step1_profile, container, false);
         init(view);
         getProfileItems();
+        ivToolbarBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                ((SetProfileActivity) getActivity()).setResult(Activity.RESULT_OK, new Intent());
+                ((SetProfileActivity) getActivity()).finish();
+            }
+        });
+        btnSkip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                ((SetProfileActivity) getActivity()).skipStep(1);
+            }
+        });
+
+
         enableFoatingEditText(etRelationshipHistory, etEthnicity, etReligion, etHeight, etBodyType
                 , etSmoking, etDrinking, etOrientation);
         return view;
@@ -71,6 +92,9 @@ public class Step1ProfileFragment extends BaseFragment {
         tvSelector7 = (TextView) view.findViewById(R.id.tvSelector7);
         tvSelector8 = (TextView) view.findViewById(R.id.tvSelector8);
         btnNext = (Button) view.findViewById(R.id.btnNext);
+        btnSkip = (Button) view.findViewById(R.id.btnskip);
+        ivToolbarBtn = ((SetProfileActivity) getActivity()).getIvToolbarBtn();
+        btnSkip = ((SetProfileActivity) getActivity()).getBtnSki();
     }
 
     @Override
@@ -175,11 +199,36 @@ public class Step1ProfileFragment extends BaseFragment {
         return profileConstants;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((SetProfileActivity) getActivity()).setTitle(getString(R.string.title_update_profile));
+        UserDetails userDetails = CommonData.getUserData();
+        setAllFields(userDetails);
+    }
+
+    /**
+     * Sets all fields in profile  if not empty
+     *
+     * @param userDetails userdetails form paper DP
+     */
+    private void setAllFields(final UserDetails userDetails) {
+        etRelationshipHistory.setText((CharSequence) userDetails.getRelationshipHistory());
+        etEthnicity.setText((CharSequence) userDetails.getEthnicity());
+        etReligion.setText((CharSequence) userDetails.getReligion());
+        etBodyType.setText((CharSequence) userDetails.getBodyType());
+        etDrinking.setText((CharSequence) userDetails.getDrinking());
+        etSmoking.setText((CharSequence) userDetails.getSmoking());
+        etHeight.setText(userDetails.getHeight());
+        etOrientation.setText(userDetails.getOrientation());
+    }
+
     /**
      * update profile to server
      */
     public void updateInfo() {
         Log.d("debug", "updating info");
+
         HashMap<String, RequestBody> multipartParams = new MultipartParams.Builder()
                 .add(KEY_USER_RELATIONSHIP_HISTORY, etRelationshipHistory.getText())
                 .add(KEY_USER_ETHNICITY, etEthnicity.getText())
@@ -188,16 +237,18 @@ public class Step1ProfileFragment extends BaseFragment {
                 .add(KEY_USER_BODY_TYPE, etBodyType.getText())
                 .add(KEY_USER_SMOKING, etSmoking.getText())
                 .add(KEY_USER_DRINKING, etDrinking.getText())
+                .add(KEY_STEP1COMPLETEORSKIPED, true)
                 .add(KEY_USER_ORIENTATION, etOrientation.getText()).build().getMap();
+
         ApiInterface apiInterface = RestClient.getApiInterface();
-        apiInterface.editPhoneNumber("bearer " + CommonData.getAccessToken(), multipartParams)
+        apiInterface.updateProfile("bearer " + CommonData.getAccessToken(), multipartParams)
                 .enqueue(new ResponseResolver<com.skeleton.model.Response>(getActivity(), false, false) {
                     @Override
                     public void success(final com.skeleton.model.Response response) {
                         android.util.Log.d("debug", response.getStatusCode().toString());
                         if ("200".equals(response.getStatusCode().toString())) {
                             CommonData.setUserData(response.getData().getUserDetails());
-                            android.util.Log.d("debug", "success bro success");
+                            ((SetProfileActivity) getActivity()).replaceFragment(new Step2ProfileFragment());
                         }
                     }
 
@@ -207,5 +258,6 @@ public class Step1ProfileFragment extends BaseFragment {
                     }
                 });
     }
+
 
 }
