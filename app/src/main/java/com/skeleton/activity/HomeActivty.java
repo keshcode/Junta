@@ -16,6 +16,7 @@ public class HomeActivty extends AppCompatActivity {
     private Button btnSkip;
     private ImageView ivToolbarbtn, ivMenu;
 
+
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
