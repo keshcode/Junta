@@ -11,7 +11,6 @@ import com.skeleton.R;
 /**
  * HOME Screen Where all action happens
  */
-
 public class HomeActivty extends AppCompatActivity {
     private Button btnSkip;
     private ImageView ivToolbarbtn, ivMenu;
