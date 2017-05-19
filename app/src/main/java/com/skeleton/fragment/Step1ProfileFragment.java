@@ -20,6 +20,7 @@ import com.skeleton.model.UserDetails;
 import com.skeleton.model.userProfile.Response;
 import com.skeleton.retrofit.APIError;
 import com.skeleton.retrofit.ApiInterface;
+import com.skeleton.retrofit.CommonResponse;
 import com.skeleton.retrofit.MultipartParams;
 import com.skeleton.retrofit.ResponseResolver;
 import com.skeleton.retrofit.RestClient;
@@ -52,6 +53,7 @@ public class Step1ProfileFragment extends BaseFragment {
         ivToolbarBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
+                CommonData.clearData();
                 ((SetProfileActivity) getActivity()).setResult(Activity.RESULT_OK, new Intent());
                 ((SetProfileActivity) getActivity()).finish();
             }

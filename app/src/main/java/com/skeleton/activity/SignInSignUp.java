@@ -33,9 +33,9 @@ public class SignInSignUp extends BaseActivity {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        directToActivty(CommonData.getAccessToken());
         setContentView(R.layout.activity_sign_in_sign_up);
         init();
-        directToActivty(CommonData.getAccessToken());
         PagerAdapter pagerAdapter = new com.skeleton.adapter.PagerAdapter(getSupportFragmentManager(), fragments);
         vpSignInSignUp.setAdapter(pagerAdapter);
         tlSignInSignUp.setupWithViewPager(vpSignInSignUp);

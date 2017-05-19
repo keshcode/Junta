@@ -105,9 +105,17 @@
     <string name="edittext_msg_drinking">Drinking</string>
     <string name="edittext_msg_orientation">Orientation</string>
 
+    <string name="textview_your_account">YOUR ACCOUNT</string>
+    <string name="textview_date_post">Date Posts</string>
+    <string name="textview_my_dates">My Dates</string>
+    <string name="textview_my_favourite">My Favourites</string>
+    <string name="textview_memberships">MemberShips</string>
+    <string name="textview_account_setting">Account Settings</string>
+
     <string name="title_otp_verfication">OTP Verification</string>
     <string name="title_edit_number">Edit Number</string>
     <string name="title_update_profile">Update Profile</string>
 
     <string name="msg_add_interests">Add Your 5 Interests</string>
+
 </resources>

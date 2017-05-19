@@ -125,7 +125,7 @@ public class VerifiyOTPFragment extends BaseFragment {
 
                     @Override
                     public void failure(final APIError error) {
-                        Log.d("debud", "failure to resend otp");
+                        Log.d("debug", "failure to resend otp");
                     }
                 }
         );
@@ -135,6 +135,7 @@ public class VerifiyOTPFragment extends BaseFragment {
      * send request tot server to verifiy otp
      */
     public void verifiyOTP() {
+        Log.d("debug", getOTPCode());
         HashMap<String, String> hashMap = new CommonParams.Builder()
                 .add(AppConstant.KEY_FRAGMENT_COUNTRY_CODE, mCountryCode)
                 .add(AppConstant.KEY_FRAGMENT_PHONE, mPhoneNo)

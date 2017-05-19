@@ -47,6 +47,7 @@ public class EditNumberFragment extends BaseFragment {
         tvTitle.setText(getString(R.string.title_edit_number));
         mAccessToken = CommonData.getAccessToken();
         btnSubmit.setOnClickListener(this);
+        ivToolbarbtn.setOnClickListener(this);
         return view;
     }
 
@@ -97,6 +98,7 @@ public class EditNumberFragment extends BaseFragment {
                 Log.d("debug", response.getStatusCode().toString());
                 if ("200".equals(response.getStatusCode().toString())) {
                     CommonData.setUserData(response.getData().getUserDetails());
+                    Log.d("debug", CommonData.getUserData().getPhoneNo());
                     ((OTPActivity) getActivity()).replaceFragment(new VerifiyOTPFragment());
                 }
             }

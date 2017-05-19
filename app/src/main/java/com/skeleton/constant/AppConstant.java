@@ -28,7 +28,7 @@ public interface AppConstant {
     String KEY_FRAGMENT_DOB = "dob";
     String KEY_FRAGMENT_COUNTRY_CODE = "countryCode";
     String KEY_FRAGMENT_PHONE = "phoneNo";
-    String KEY_FRAGMENT_OTPCODE = "OTPCode ";
+    String KEY_FRAGMENT_OTPCODE = "OTPCode";
     String KEY_FRAGMENT_EMAIL = "email";
     String KEY_FRAGMENT_PASSWORD = "password";
     String KEY_FRAGMENT_LANGUAGE = "language";
