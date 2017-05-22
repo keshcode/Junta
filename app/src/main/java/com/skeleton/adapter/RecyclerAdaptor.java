@@ -14,7 +14,6 @@ import com.skeleton.R;
 import com.skeleton.fragment.Step2ProfileFragment;
 import com.skeleton.model.interestCatergories.Categories;
 
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -23,7 +22,6 @@ import java.util.List;
 
 public class RecyclerAdaptor extends RecyclerView.Adapter<RecyclerAdaptor.ViewHolder> {
     private List<Categories> categoriesList;
-    private HashMap<String, String> map;
     private Context context;
     private Fragment fragment;
 
@@ -36,8 +34,6 @@ public class RecyclerAdaptor extends RecyclerView.Adapter<RecyclerAdaptor.ViewHo
         this.categoriesList = categories;
         this.context = context;
         this.fragment = fragment;
-        map = new HashMap<String, String>();
-
     }
 
     @Override
