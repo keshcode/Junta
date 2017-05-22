@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.skeleton.R;
 import com.skeleton.database.CommonData;
 import com.skeleton.fragment.Step1ProfileFragment;
+import com.skeleton.fragment.Step2ProfileFragment;
 import com.skeleton.retrofit.APIError;
 import com.skeleton.retrofit.ApiInterface;
 import com.skeleton.retrofit.CommonResponse;
@@ -32,7 +33,11 @@ public class SetProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_profile);
         init();
-        replaceFragment(new Step1ProfileFragment());
+        if (!CommonData.getUserData().getStep1CompleteOrSkip()) {
+            replaceFragment(new Step1ProfileFragment());
+        } else {
+            replaceFragment(new Step2ProfileFragment());
+        }
     }
 
     /**
@@ -91,7 +96,11 @@ public class SetProfileActivity extends AppCompatActivity {
                 .enqueue(new ResponseResolver<CommonResponse>(this, true, true) {
                     @Override
                     public void success(final CommonResponse commonResponse) {
-                        Log.d("debug", commonResponse.getStatusCode());
+                        if (mStepNumber == 1) {
+                            replaceFragment(new Step1ProfileFragment());
+                        } else {
+                            replaceFragment(new Step2ProfileFragment());
+                        }
                     }
 
                     @Override

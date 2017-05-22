@@ -20,7 +20,6 @@ import com.skeleton.model.UserDetails;
 import com.skeleton.model.userProfile.Response;
 import com.skeleton.retrofit.APIError;
 import com.skeleton.retrofit.ApiInterface;
-import com.skeleton.retrofit.CommonResponse;
 import com.skeleton.retrofit.MultipartParams;
 import com.skeleton.retrofit.ResponseResolver;
 import com.skeleton.retrofit.RestClient;
@@ -94,7 +93,6 @@ public class Step1ProfileFragment extends BaseFragment {
         tvSelector7 = (TextView) view.findViewById(R.id.tvSelector7);
         tvSelector8 = (TextView) view.findViewById(R.id.tvSelector8);
         btnNext = (Button) view.findViewById(R.id.btnNext);
-        btnSkip = (Button) view.findViewById(R.id.btnskip);
         ivToolbarBtn = ((SetProfileActivity) getActivity()).getIvToolbarBtn();
         btnSkip = ((SetProfileActivity) getActivity()).getBtnSki();
     }
@@ -260,6 +258,4 @@ public class Step1ProfileFragment extends BaseFragment {
                     }
                 });
     }
-
-
 }

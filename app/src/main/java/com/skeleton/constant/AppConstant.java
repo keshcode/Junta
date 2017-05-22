@@ -20,7 +20,7 @@ public interface AppConstant {
     int REQ_CODE_SCREEN_OVERLAY = 10101;
     int REQ_CODE_SCREEN_OTP = 16062;
     int REQ_CODE_SCREEN_PROFILE_COMPELTE = 16063;
-    int REQ_CODE_SCREEN_HOME = 16064;
+    int REQ_CODE_SINGIN_SIGNUP = 16064;
 
     //USER_SIGNUP_KEYS
     String KEY_FRAGMENT_FNAME = "firstName";

@@ -1,5 +1,7 @@
 package com.skeleton.fragment;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -78,10 +80,11 @@ public class SignInFragment extends BaseFragment {
             public void success(final Response response) {
                 Log.d("debug", response.getStatusCode().toString());
                 if ("200".equals(response.getStatusCode().toString())) {
+                    ((SignInSignUp) getActivity()).clearEditText(etSignInEmail, etSignInPassword);
                     CommonData.saveAccessToken(response.getData().getAccessToken());
                     CommonData.setUserData(response.getData().getUserDetails());
-                    ((SignInSignUp) getActivity()).directToActivty(CommonData.getAccessToken());
-                    Log.d("debug", "accEss ALLOWED");
+                    getActivity().setResult(Activity.RESULT_OK, new Intent());
+                    getActivity().finish();
                 }
             }
 
@@ -114,6 +117,4 @@ public class SignInFragment extends BaseFragment {
         etSignInPassword = (MaterialEditText) view.findViewById(R.id.etSignInPassword);
         btnLogin = (Button) view.findViewById(R.id.btnLogin);
     }
-
-
 }

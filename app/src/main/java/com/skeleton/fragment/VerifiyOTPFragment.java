@@ -1,6 +1,8 @@
 package com.skeleton.fragment;
 
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -91,10 +93,10 @@ public class VerifiyOTPFragment extends BaseFragment {
                 verifiyOTP();
                 break;
             case R.id.ivToolbarBtn:
-                ((OTPActivity) getActivity()).finish();
+                getActivity().finish();
                 break;
             default:
-                Log.d("debug", "end my world");
+                Log.d("debug", "running ...  #default case!");
                 break;
         }
     }
@@ -125,7 +127,7 @@ public class VerifiyOTPFragment extends BaseFragment {
 
                     @Override
                     public void failure(final APIError error) {
-                        Log.d("debug", "failure to resend otp");
+                        Log.d("debug", error.getMessage());
                     }
                 }
         );
@@ -150,6 +152,7 @@ public class VerifiyOTPFragment extends BaseFragment {
                             UserDetails userData = CommonData.getUserData();
                             userData.setPhoneVerified(true);
                             CommonData.setUserData(userData);
+                            ((OTPActivity) getActivity()).setResult(Activity.RESULT_OK, new Intent());
                             ((OTPActivity) getActivity()).finish();
                         }
                     }

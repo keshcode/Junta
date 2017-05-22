@@ -1,5 +1,6 @@
 package com.skeleton.fragment;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.kbeanie.multipicker.api.entity.ChosenImage;
 import com.skeleton.R;
+import com.skeleton.activity.SignInSignUp;
 import com.skeleton.constant.AppConstant;
 import com.skeleton.database.CommonData;
 import com.skeleton.retrofit.APIError;
@@ -229,10 +231,12 @@ public class SignUpFragment extends Fragment {
                 Log.d(TAG, "success: " + response.getStatusCode());
                 Toast.makeText(getContext(), response.getMessage(), Toast.LENGTH_SHORT).show();
                 if ("200".equals(response.getStatusCode().toString())) {
-                    clearEditText(etName, etDOB, etConfirmPassword,
+                    ((SignInSignUp) getActivity()).clearEditText(etName, etDOB, etConfirmPassword,
                             etEmailAddr, etPassword, etPhoneNo);
                     CommonData.saveAccessToken(response.getData().getAccessToken());
                     CommonData.setUserData(response.getData().getUserDetails());
+                    ((SignInSignUp) getActivity()).setResult(Activity.RESULT_OK, new Intent());
+                    ((SignInSignUp) getActivity()).finish();
                 }
 
             }
@@ -247,17 +251,5 @@ public class SignUpFragment extends Fragment {
 
     }
 
-    /**
-     * Clear the string in the editext
-     *
-     * @param editText : multiple edittexts to be cleared
-     */
-
-    public static void clearEditText(final EditText... editText) {
-        for (EditText editText1 : editText) {
-            editText1.setText("");
-        }
-
-    }
 
 }

@@ -75,6 +75,10 @@ public class SplashActivity extends BaseActivity implements FCMTokenInterface {
     protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        if (resultCode != RESULT_OK) {
+            CommonData.clearData();
+        }
+
         if (requestCode == REQ_CODE_SCREEN_OVERLAY) {
             if (Settings.canDrawOverlays(this)) {
                 init();
@@ -82,7 +86,11 @@ public class SplashActivity extends BaseActivity implements FCMTokenInterface {
         } else if (requestCode == REQ_CODE_PLAY_SERVICES_RESOLUTION
                 && resultCode == Activity.RESULT_OK) {
             init();
+        } else {
+            directToActivty(CommonData.getAccessToken());
         }
+
+
     }
 
     /**
@@ -120,7 +128,6 @@ public class SplashActivity extends BaseActivity implements FCMTokenInterface {
         Log.e(TAG, token);
         String mAccessToken = CommonData.getAccessToken();
         directToActivty(mAccessToken);
-        finish();
     }
 
     /**
@@ -157,8 +164,8 @@ public class SplashActivity extends BaseActivity implements FCMTokenInterface {
                 }
             });
         } else {
-            Intent intent = new Intent(SplashActivity.this, OTPActivity.class);
-            startActivityForResult(intent, REQ_CODE_SCREEN_OTP);
+            Intent intent = new Intent(SplashActivity.this, SignInSignUp.class);
+            startActivityForResult(intent, REQ_CODE_SINGIN_SIGNUP);
         }
     }
 

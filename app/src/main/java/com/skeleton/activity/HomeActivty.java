@@ -20,11 +20,16 @@ public class HomeActivty extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_activty);
+        init();
         ivMenu.setVisibility(View.VISIBLE);
         ivToolbarbtn.setVisibility(View.GONE);
-        init();
+        btnSkip.setVisibility(View.GONE);
     }
 
+
+    /**
+     * initialize all variables
+     */
     private void init() {
         btnSkip = (Button) findViewById(R.id.btnskip);
         ivMenu = (ImageView) findViewById(R.id.ivMenu);
