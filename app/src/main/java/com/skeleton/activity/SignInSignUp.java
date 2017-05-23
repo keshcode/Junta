@@ -33,6 +33,12 @@ public class SignInSignUp extends BaseActivity {
         tlSignInSignUp.setupWithViewPager(vpSignInSignUp);
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finishAffinity();
+    }
+
     /**
      * initialize all variables
      */

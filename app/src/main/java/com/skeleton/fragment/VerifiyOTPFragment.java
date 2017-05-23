@@ -120,9 +120,8 @@ public class VerifiyOTPFragment extends BaseFragment {
                 new ResponseResolver<CommonResponse>(getActivity(), true, true) {
                     @Override
                     public void success(final CommonResponse commonResponse) {
-                        if ("200".equals(commonResponse.getStatusCode())) {
-                            Toast.makeText(getActivity(), "new Verification code has been sent", Toast.LENGTH_SHORT).show();
-                        }
+                        Toast.makeText(getActivity(), "new Verification code has been sent", Toast.LENGTH_SHORT).show();
+
                     }
 
                     @Override
@@ -148,13 +147,12 @@ public class VerifiyOTPFragment extends BaseFragment {
                 new ResponseResolver<CommonResponse>(getActivity(), true, true) {
                     @Override
                     public void success(final CommonResponse commonResponse) {
-                        if ("200".equals(commonResponse.getStatusCode())) {
-                            UserDetails userData = CommonData.getUserData();
-                            userData.setPhoneVerified(true);
-                            CommonData.setUserData(userData);
-                            ((OTPActivity) getActivity()).setResult(Activity.RESULT_OK, new Intent());
-                            ((OTPActivity) getActivity()).finish();
-                        }
+                        UserDetails userData = CommonData.getUserData();
+                        userData.setPhoneVerified(true);
+                        CommonData.setUserData(userData);
+                        ((OTPActivity) getActivity()).setResult(Activity.RESULT_OK, new Intent());
+                        ((OTPActivity) getActivity()).finish();
+
                     }
 
                     @Override

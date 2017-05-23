@@ -230,14 +230,13 @@ public class SignUpFragment extends Fragment {
                 Log.d(TAG, "success: " + response.getStatusCode());
                 Log.d(TAG, "success: " + response.getStatusCode());
                 Toast.makeText(getContext(), response.getMessage(), Toast.LENGTH_SHORT).show();
-                if ("200".equals(response.getStatusCode().toString())) {
-                    ((SignInSignUp) getActivity()).clearEditText(etName, etDOB, etConfirmPassword,
-                            etEmailAddr, etPassword, etPhoneNo);
-                    CommonData.saveAccessToken(response.getData().getAccessToken());
-                    CommonData.setUserData(response.getData().getUserDetails());
-                    ((SignInSignUp) getActivity()).setResult(Activity.RESULT_OK, new Intent());
-                    ((SignInSignUp) getActivity()).finish();
-                }
+                ((SignInSignUp) getActivity()).clearEditText(etName, etDOB, etConfirmPassword,
+                        etEmailAddr, etPassword, etPhoneNo);
+                CommonData.saveAccessToken(response.getData().getAccessToken());
+                CommonData.setUserData(response.getData().getUserDetails());
+                ((SignInSignUp) getActivity()).setResult(Activity.RESULT_OK, new Intent());
+                ((SignInSignUp) getActivity()).finish();
+
 
             }
 
@@ -247,8 +246,6 @@ public class SignUpFragment extends Fragment {
                 Log.d(TAG, "failure: Message" + error.getMessage());
             }
         });
-
-
     }
 
 

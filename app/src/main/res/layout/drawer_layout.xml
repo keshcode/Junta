@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/linearDrawer"
+              android:id="@+id/llDrawer"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:layout_gravity="center"
@@ -17,7 +17,7 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/iv_profile_image"
+            android:id="@+id/ivProfileImage"
             android:layout_width="69dp"
             android:layout_height="68dp"
             android:layout_gravity="center"
@@ -48,34 +48,34 @@
         >
 
         <TextView
-            android:id="@+id/tv_date_posts"
+            android:id="@+id/tvDatePosts"
             style="@style/TvDrawerTheme"
             android:drawableStart="@drawable/date_posts"
             android:text="@string/textview_date_post"
             />
 
         <TextView
-            android:id="@+id/tv_confirmed_dates"
+            android:id="@+id/tvConfirmedDates"
             style="@style/TvDrawerTheme"
             android:drawableStart="@drawable/my_dates"
             android:text="@string/textview_my_dates"/>
 
         <TextView
-            android:id="@+id/tv_favourites"
+            android:id="@+id/tvFavourites"
             style="@style/TvDrawerTheme"
             android:drawableStart="@drawable/favouritesss"
             android:text="@string/textview_my_favourite"
             />
 
         <TextView
-            android:id="@+id/tv_membership"
+            android:id="@+id/tvMembership"
             style="@style/TvDrawerTheme"
             android:drawableStart="@drawable/mmemberships"
             android:text="@string/textview_memberships"
             />
 
         <TextView
-            android:id="@+id/tv_account_setting"
+            android:id="@+id/tvAccountSetting"
             style="@style/TvDrawerTheme"
             android:drawableStart="@drawable/settings"
             android:text="@string/textview_account_setting"
@@ -85,7 +85,7 @@
 
 
     <TextView
-        android:id="@+id/tv_logout"
+        android:id="@+id/tvLogout"
         style="@style/TvDrawerTheme"
         android:layout_gravity="center"
         android:text="@string/logout"

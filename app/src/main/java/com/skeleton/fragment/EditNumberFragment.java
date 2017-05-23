@@ -96,11 +96,10 @@ public class EditNumberFragment extends BaseFragment {
             @Override
             public void success(final Response response) {
                 Log.d("debug", response.getStatusCode().toString());
-                if ("200".equals(response.getStatusCode().toString())) {
-                    CommonData.setUserData(response.getData().getUserDetails());
-                    Log.d("debug", CommonData.getUserData().getPhoneNo());
-                    ((OTPActivity) getActivity()).replaceFragment(new VerifiyOTPFragment());
-                }
+                CommonData.setUserData(response.getData().getUserDetails());
+                Log.d("debug", CommonData.getUserData().getPhoneNo());
+                ((OTPActivity) getActivity()).replaceFragment(new VerifiyOTPFragment());
+
             }
 
             @Override

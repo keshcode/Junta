@@ -186,12 +186,11 @@ public class Step2ProfileFragment extends BaseFragment {
                     @Override
                     public void success(final Response response) {
                         Log.d("debug", String.valueOf(response.getStatusCode()));
-                        if ("200".equals(String.valueOf(response.getStatusCode()))) {
-                            categoriesList = response.getData().getCategories();
-                            RecyclerAdaptor recyclerAdaptor = new RecyclerAdaptor(categoriesList, getContext(), Step2ProfileFragment.this);
-                            rvInterest.setLayoutManager(new GridLayoutManager(getActivity(), 3));
-                            rvInterest.setAdapter(recyclerAdaptor);
-                        }
+                        categoriesList = response.getData().getCategories();
+                        RecyclerAdaptor recyclerAdaptor = new RecyclerAdaptor(categoriesList, getContext(), Step2ProfileFragment.this);
+                        rvInterest.setLayoutManager(new GridLayoutManager(getActivity(), 3));
+                        rvInterest.setAdapter(recyclerAdaptor);
+
                     }
 
                     @Override

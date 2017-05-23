@@ -79,13 +79,12 @@ public class SignInFragment extends BaseFragment {
             @Override
             public void success(final Response response) {
                 Log.d("debug", response.getStatusCode().toString());
-                if ("200".equals(response.getStatusCode().toString())) {
-                    ((SignInSignUp) getActivity()).clearEditText(etSignInEmail, etSignInPassword);
-                    CommonData.saveAccessToken(response.getData().getAccessToken());
-                    CommonData.setUserData(response.getData().getUserDetails());
-                    getActivity().setResult(Activity.RESULT_OK, new Intent());
-                    getActivity().finish();
-                }
+                ((SignInSignUp) getActivity()).clearEditText(etSignInEmail, etSignInPassword);
+                CommonData.saveAccessToken(response.getData().getAccessToken());
+                CommonData.setUserData(response.getData().getUserDetails());
+                getActivity().setResult(Activity.RESULT_OK, new Intent());
+                getActivity().finish();
+
             }
 
             @Override
@@ -99,9 +98,8 @@ public class SignInFragment extends BaseFragment {
      * @return boolean returns the
      */
     private boolean validate() {
-        ValidateEditText validateEditText = new ValidateEditText();
-        if (validateEditText.checkEmail(etSignInEmail)
-                && validateEditText.checkPassword(etSignInPassword, false)) {
+        if (ValidateEditText.checkEmail(etSignInEmail)
+                && ValidateEditText.checkPassword(etSignInPassword, false)) {
             return true;
         }
         return false;

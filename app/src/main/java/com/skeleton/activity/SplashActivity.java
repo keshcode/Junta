@@ -139,38 +139,47 @@ public class SplashActivity extends BaseActivity implements FCMTokenInterface {
         if (mAccessToken != null) {
             ApiInterface apiInterface = RestClient.getApiInterface();
             Log.d("debug", mAccessToken);
-            apiInterface.userProfile("bearer " + mAccessToken).enqueue(new ResponseResolver<Response>(this, true, true) {
-                @Override
-                public void success(final Response response) {
-                    if (!response.getData().getUserDetails().getPhoneVerified()) {
+            if (CommonData.getUserData() == null) {
+                apiInterface.userProfile("bearer " + mAccessToken).enqueue(new ResponseResolver<Response>(this, true, true) {
+                    @Override
+                    public void success(final Response response) {
                         CommonData.setUserData(response.getData().getUserDetails());
-                        Intent intent = new Intent(SplashActivity.this, OTPActivity.class);
-                        startActivityForResult(intent, REQ_CODE_SCREEN_OTP);
-                    } else {
-                        if (response.getData().getUserDetails().getStep1CompleteOrSkip()
-                                && response.getData().getUserDetails().getStep2CompleteOrSkip()) {
-                            startActivityForResult(new Intent(SplashActivity.this, HomeActivty.class)
-                                    , REQ_CODE_SCREEN_PROFILE_COMPELTE);
-                        } else {
-                            startActivity(new Intent(SplashActivity.this, SetProfileActivity.class));
-                            finish();
-                        }
                     }
-                }
 
-                @Override
-                public void failure(final APIError error) {
-                    android.util.Log.e("debug", error.getMessage());
-                }
-            });
+                    @Override
+                    public void failure(final APIError error) {
+                        android.util.Log.e("debug", error.getMessage());
+                    }
+                });
+            }
+            navigateToActivity();
         } else {
             Intent intent = new Intent(SplashActivity.this, SignInSignUp.class);
             startActivityForResult(intent, REQ_CODE_SINGIN_SIGNUP);
         }
     }
 
+    /**
+     * navigate to other activity
+     */
+    public void navigateToActivity() {
+        if (!CommonData.getUserData().getPhoneVerified()) {
+            Intent intent = new Intent(SplashActivity.this, OTPActivity.class);
+            startActivityForResult(intent, REQ_CODE_SCREEN_OTP);
+        } else {
+            if (CommonData.getUserData().getStep1CompleteOrSkip()
+                    && CommonData.getUserData().getStep2CompleteOrSkip()) {
+                startActivityForResult(new Intent(SplashActivity.this, HomeActivty.class)
+                        , REQ_CODE_SCREEN_PROFILE_COMPELTE);
+            } else {
+                startActivity(new Intent(SplashActivity.this, SetProfileActivity.class));
+                finish();
+            }
+        }
+    }
 
     @Override
+
     public void onFailure() {
         if (isFinishing()) {
             return;

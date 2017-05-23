@@ -2,7 +2,6 @@ package com.skeleton.fragment;
 
 import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
@@ -53,7 +52,7 @@ public class Step1ProfileFragment extends BaseFragment {
             @Override
             public void onClick(final View v) {
                 CommonData.clearData();
-                ((SetProfileActivity) getActivity()).setResult(Activity.RESULT_OK, new Intent());
+                ((SetProfileActivity) getActivity()).setResult(Activity.RESULT_OK);
                 ((SetProfileActivity) getActivity()).finish();
             }
         });
