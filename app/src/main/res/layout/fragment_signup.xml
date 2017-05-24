@@ -68,6 +68,8 @@
         <com.skeleton.util.customview.MaterialEditText
             android:id="@+id/etDOB"
             style="@style/EtTheme"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:hint="@string/dob"/>
 
         <LinearLayout

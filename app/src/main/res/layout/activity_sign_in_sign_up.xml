@@ -37,7 +37,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:contentScrim="@color/gray_light"
+                app:contentScrim="@color/transparent_black"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
@@ -46,7 +46,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:layout_gravity="bottom"
-                android:background="@color/transparent_black"
                 app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"/>
 
 

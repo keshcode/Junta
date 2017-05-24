@@ -1,16 +1,17 @@
 package com.skeleton.fragment;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -31,10 +32,12 @@ import com.skeleton.retrofit.RestClient;
 import com.skeleton.util.Log;
 import com.skeleton.util.ValidateEditText;
 import com.skeleton.util.customview.MaterialEditText;
+import com.skeleton.util.dialog.DatePickerFragment;
 import com.skeleton.util.imagepicker.ImageChooser;
 
 import java.io.File;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -49,7 +52,7 @@ import okhttp3.RequestBody;
  * Created by keshav on 9/5/17.
  */
 
-public class SignUpFragment extends Fragment {
+public class SignUpFragment extends BaseFragment {
     private static final String TAG = "debug";
     private ImageView ivProfile;
     private MaterialEditText etName, etPhoneNo, etDOB, etEmailAddr, etPassword, etConfirmPassword;
@@ -70,9 +73,17 @@ public class SignUpFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_signup, container, false);
         init(view);
         Paper.init(getContext());
-        ivProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
+        ivProfile.setOnClickListener(this);
+        btnSignup.setOnClickListener(this);
+        etDOB.setOnClickListener(this);
+        return view;
+    }
+
+    @Override
+    public void onClick(final View v) {
+        super.onClick(v);
+        switch (v.getId()) {
+            case R.id.ivProfile:
                 mChoose = new ImageChooser(new ImageChooser.Builder(SignUpFragment.this));
                 mChoose.selectImage(new ImageChooser.OnImageSelectListener() {
                     @Override
@@ -88,15 +99,8 @@ public class SignUpFragment extends Fragment {
 
                     }
                 });
-
-
-            }
-        });
-
-
-        btnSignup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
+                break;
+            case R.id.btnSignUp:
                 checkedId = rgGender.getCheckedRadioButtonId();
                 checkGender();
                 if (validate()) {
@@ -104,11 +108,24 @@ public class SignUpFragment extends Fragment {
                     postData();
                 }
                 Log.d("debug", "conre");
-            }
-        });
+                break;
+            case R.id.etDOB:
+                DatePickerFragment datePickerFragment = DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(final DatePicker view, final int year, final int month, final int dayOfMonth) {
+                        DecimalFormat df = new DecimalFormat("00");
+                        etDOB.setText(new StringBuilder()
+                                .append(year).append("-")
+                                .append(df.format((long) (month + 1))).append("-")
+                                .append(df.format((long) dayOfMonth)));
+                    }
+                });
+                datePickerFragment.show(getChildFragmentManager(), TAG_DATEPICKER);
+                break;
+            default:
+                break;
 
-
-        return view;
+        }
     }
 
     /**

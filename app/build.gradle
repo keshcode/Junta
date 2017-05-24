@@ -140,6 +140,7 @@ dependencies {
     compile 'io.paperdb:paperdb:2.0'
     compile 'com.facebook.android:facebook-android-sdk:4.21.1'
     compile 'com.kbeanie:multipicker:1.1.31@aar'
+    compile 'com.hbb20:ccp:1.7.6'
     compile 'com.theartofdev.edmodo:android-image-cropper:2.3.0'
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
     testCompile 'junit:junit:4.12'
