@@ -35,6 +35,7 @@ public class SignInFragment extends BaseFragment {
     private MaterialEditText etSignInEmail, etSignInPassword;
     private Button btnLogin;
 
+
     @Nullable
     @Override
     public View onCreateView(final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable final Bundle savedInstanceState) {
@@ -75,7 +76,7 @@ public class SignInFragment extends BaseFragment {
                 .add(AppConstant.KEY_FRAGMENT_APP_VERSION, AppConstant.VALUE_FRAGMENT_APP_VERSION).build().getMap();
 
         ApiInterface apiInterface = RestClient.getApiInterface();
-        apiInterface.userLogin(null, hashMap).enqueue(new ResponseResolver<Response>(getContext(), false, false) {
+        apiInterface.userLogin(null, hashMap).enqueue(new ResponseResolver<Response>(getContext(), false, true) {
             @Override
             public void success(final Response response) {
                 Log.d("debug", response.getStatusCode().toString());
@@ -114,5 +115,6 @@ public class SignInFragment extends BaseFragment {
         etSignInEmail = (MaterialEditText) view.findViewById(R.id.etSignInEmail);
         etSignInPassword = (MaterialEditText) view.findViewById(R.id.etSignInPassword);
         btnLogin = (Button) view.findViewById(R.id.btnLogin);
+
     }
 }

@@ -27,6 +27,8 @@ public class HomeActivty extends BaseActivity {
         ivMenu.setVisibility(View.VISIBLE);
         ivToolbarbtn.setVisibility(View.GONE);
         btnSkip.setVisibility(View.GONE);
+        tvLogout.setOnClickListener(this);
+
     }
 
     @Override

@@ -41,7 +41,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="@dimen/font_normal"
                 android:text="@string/remember_me"
                 android:textSize="@dimen/font_large"/>
 

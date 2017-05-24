@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -51,11 +52,12 @@ import okhttp3.RequestBody;
 public class SignUpFragment extends Fragment {
     private static final String TAG = "debug";
     private ImageView ivProfile;
-    private MaterialEditText etName, etPhoneNo, etDOB, etEmailAddr, etPassword, etConfirmPassword, cbTermsAndCondi;
+    private MaterialEditText etName, etPhoneNo, etDOB, etEmailAddr, etPassword, etConfirmPassword;
     private RadioGroup rgGender;
     private RadioButton rbgender;
     private int checkedId;
     private File mProfilePic;
+    private CheckBox cbTermsAndCondi;
     private Button btnSignup;
     private String mOrientation = "Straight", mCountryCode = "+91";
     private int mGender;
@@ -151,6 +153,7 @@ public class SignUpFragment extends Fragment {
         etConfirmPassword = (MaterialEditText) view.findViewById(R.id.etConfirmPassword);
         btnSignup = (Button) view.findViewById(R.id.btnSignUp);
         rgGender = (RadioGroup) view.findViewById(R.id.rgGender);
+        cbTermsAndCondi = (CheckBox) view.findViewById(R.id.cbTermsAndCondi);
         enableFoatingEditText(etConfirmPassword, etDOB, etEmailAddr, etName, etPhoneNo, etPassword);
     }
 
@@ -165,11 +168,25 @@ public class SignUpFragment extends Fragment {
                 && (ValidateEditText.checkPassword(etPassword, false))
                 && (ValidateEditText.checkPassword(etConfirmPassword, true))
                 && (ValidateEditText.comparePassword(etPassword, etConfirmPassword))
-                && (validateEditText.genericEmpty(etDOB, getString(R.string.error_DOB_empty)) && (checkDOB(etDOB)))) {
+                && (validateEditText.genericEmpty(etDOB, getString(R.string.error_DOB_empty)) && (checkDOB(etDOB)))
+                && (isAgreedToTerms())) {
             return true;
         }
         return false;
     }
+
+    /**
+     * @return if agreed to terms and consitions
+     */
+    private boolean isAgreedToTerms() {
+        if (cbTermsAndCondi.isChecked()) {
+            return true;
+        } else {
+            Toast.makeText(getActivity(), getString(R.string.msg_not_agreed_to_terms), Toast.LENGTH_SHORT).show();
+        }
+        return false;
+    }
+
 
     /**
      * Checks if date is in valid format

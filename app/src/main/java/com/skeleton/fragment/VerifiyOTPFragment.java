@@ -93,6 +93,7 @@ public class VerifiyOTPFragment extends BaseFragment {
                 verifiyOTP();
                 break;
             case R.id.ivToolbarBtn:
+                CommonData.clearData();
                 getActivity().finish();
                 break;
             default:
